@@ -7,5 +7,5 @@ else
 
     let "s = $1*60"
 
-    sudo sleep $s && sudo pm-suspend
+    sudo sleep $s &&  amixer sset Master mute && sudo pm-suspend
 fi
