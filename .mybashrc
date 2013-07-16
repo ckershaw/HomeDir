@@ -1,0 +1,99 @@
+### Ryan Morton's bashrc stuff
+## b/c he was sick of fussing with the .bashrc file when upgrading ubuntu
+# Thus name this something like .mybashrc and put the following in your .bashrc
+# if [ -f ~/.mybashrc ]; then
+#     . ~/.mybashrc
+# fi
+
+#export CLASSPATH=$CLASSPATH:/usr/share/java/gluegen-rt.jar:/usr/local/share/java/lcm.jar:$HOME/april/java/april.jar:./
+
+#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/april/lib
+
+#alias java='java -ea -server -Djava.library.path=$HOME/april/lib'
+
+
+
+
+# SHELL PROMPT
+function parse_git_dirty {
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+}
+function parse_git_branch {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
+}
+
+export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[31m\] $(parse_git_branch)\[\033[01;34m\]$\[\033[00m\] '
+
+# Important Paths
+export JAVA_HOME=/usr
+export MAGICHOME=$HOME/magic
+export APRILHOME=$HOME/april
+export UORCHOME=$HOME/uorc
+export GITHOME=$HOME/myGit
+export SVNHOME=$HOME/mySvn
+export IARCHOME=$HOME/iarc
+export NEECHOME=$HOME/perls-neec
+
+# all jars
+export CLASSPATH=$APRILHOME/java/april.jar
+export CLASSPATH=$CLASSPATH:$UORCHOME/user/java/orc.jar
+export CLASSPATH=$CLASSPATH:$MAGICHOME/java/magic.jar
+export CLASSPATH=$CLASSPATH:/usr/share/java/jzlib.jar
+export CLASSPATH=$CLASSPATH:/usr/share/java/junit.jar
+export CLASSPATH=$CLASSPATH:/usr/share/java/gluegen-rt.jar
+export CLASSPATH=$CLASSPATH:/usr/share/java/jogl.jar
+export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcm.jar
+export CLASSPATH=$CLASSPATH:$IARCHOME/java/iarc.jar
+export CLASSPATH=$CLASSPATH:$NEECHOME/build/share/java/perls_spy.jar
+export CLASSPATH=$CLASSPATH:$NEECHOME/build/share/java/perls_lcmtypes.jar
+export CLASSPATH=$CLASSPATH:/usr/local/share/java/bot2-lcmgl.jar
+export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcmspy_plugins_bot2.jar
+export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcmtypes_bot2-core.jar
+export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcmtypes_bot2-frames.jar
+export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcmtypes_bot2-param.jar
+export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcmtypes_bot2-procman.jar
+export CLASSPATH=$CLASSPATH:.
+
+# Java load library
+export LD_LIBRARY_PATH=$APRILHOME/lib:/usr/lib:/usr/local/lib
+
+# path
+export PATH=$PATH:$APRILHOME/bin
+export PATH=$PATH:$HOME/Utilities/bin
+export PATH=$PATH:/opt/arm/bin
+export PATH=$PATH:$HOME/Android/android-sdk-linux_x86/tools
+export PATH=$PATH:$HOME/Android/android-sdk-linux_x86/platform-tools
+
+# ALIASES
+alias ll='ls -l'
+alias lla='ls -al'
+alias md=mkdir
+alias rd=rmdir
+alias cls=clear
+alias svnst='svn st | grep -v "^?"'
+alias java='java -server -ea'
+alias java-prof='java -client -agentlib:hprof=cpu=samples,depth=8,interval=1,thread=y'
+alias java-prof-view='java -jar $HOME/Utilities/java/PerfAnal.jar java.hprof.txt'
+alias grepPS='clear; grep ''publish\('' * -R; echo ; grep ''subscribe\('' * -R'
+alias gitk='gitk --all &'
+alias 'cd..'='cd ..'
+alias gitup='git remote update'
+alias gitst='git status'
+alias gd='git diff --color'
+alias grep="grep -n --color=auto -I --exclude-dir=\".svn\""
+
+alias mc="make clean"
+alias mcm="make clean; make"
+alias aca="ant clean; ant"
+
+function svndiff () {
+  svn diff ${1+"$@"} | colordiff | less -R
+}
+
+alias viewer='BASE_STATION_ID=103 java $JOPTS april.viewer.Viewer --config $HOME/magic/config/robot.config'
+
+export FIGNORE=CVS:\~:.o:.svn
+
+date
+
+
