@@ -1,0 +1,6 @@
+[user]
+	email = ckershaw@umich.com
+	name = Carl Kershaw
+
+[merge]
+    tool = vimdiff
