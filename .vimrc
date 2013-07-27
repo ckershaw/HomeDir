@@ -29,6 +29,8 @@ nnoremap <F1> za
 onoremap <F1> <C-C>za
 vnoremap <F1> zf
 
+set autochdir 
+
 noremap <F2> <esc>:mksession! <C-R>="~/.vim_session" <CR>
     " Makes F2 save your vim session to ~/.vim_session (after you press enter)
 noremap <F3> <esc>:source <C-R>="~/.vim_session" <CR>
