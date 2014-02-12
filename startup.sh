@@ -1,22 +1,22 @@
 #!/bin/bash
 
-	sudo apt-get install git svn libxmu-dev libgsl0-dev libcv-dev libcvaux-dev libopencv-dev libopencv-dev libblas-dev libf2c2-dev liblapack-dev libeigen3-dev libsuitesparse-dev libatlas-base-dev libqhull-dev doxygen libxml2-dev libann-dev libboost-dev libboost-system-dev libboost-program-options-dev libdevil-dev libcurl4-nss-dev unity-tweak-tool gnome-tweak-tool synaptic compizconfig-settings-manager compiz-plugins-extra  ubuntu-restricted-extras gstreamer0.10-plugins-ugly gstreamer0.10-ffmpeg libxine1-ffmpeg gxine mencoder libdvdread4 totem-mozilla icedax tagtool easytag id3tool lame nautilus-script-audio-convert libmad0 mpg321 p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller indicator-cpufreq indicator-multiload gksu
+	sudo apt-get install git svnkit libxmu-dev libgsl0-dev libcv-dev libcvaux-dev libopencv-dev libopencv-dev libblas-dev libf2c2-dev liblapack-dev libeigen3-dev libsuitesparse-dev libatlas-base-dev libqhull-dev doxygen libxml2-dev libann-dev libboost-dev libboost-system-dev libboost-program-options-dev libdevil-dev libcurl4-nss-dev unity-tweak-tool gnome-tweak-tool synaptic compizconfig-settings-manager compiz-plugins-extra  ubuntu-restricted-extras gstreamer0.10-plugins-ugly gstreamer0.10-ffmpeg libxine1-ffmpeg gxine mencoder libdvdread4 totem-mozilla icedax tagtool easytag id3tool lame nautilus-script-audio-convert libmad0 mpg321 p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller indicator-cpufreq indicator-multiload gksu cmake-curses-gui
 
 	scp maav_team@maaverick.engin.umich.edu:~/installGCS.sh ./
     ./installGCS.sh
 
     cd iarc/
     git remote add ckershaw caen:Public/iarc.git
-    git fetch ckershaw
     git remote add jbendes caen:/afs/umich.edu/user/j/b/jbendes/Public/iarc.git
-    git fetch jbendes 
     git remote add isaac maav_team@maaverick.engin.umich.edu:repo/isaac/iarc.git
+    git fetch jbendes 
+    git fetch ckershaw
     git fetch isaac
 
 
     svn co https://robots.engin.umich.edu/svn/perls/branches/neec perls-neec
     cd perls-neec/third-party/
-    ./perls-essentials
+    ./perls-essentials.sh
 
     gsettings set com.canonical.desktop.interface scrollbar-mode normal
     gsettings set com.canonical.indicator.session show-real-name-on-panel true
@@ -31,11 +31,11 @@
     cp scripts/.mybashrc ./
     cp scripts/.gitconfig ./
     cp scripts/.vimrc ./
-    cp scripts/.ssh ./
+    cp -r scripts/.ssh ./
     sudo cp /etc/NetworkManager/NetworkManager.conf /etc/NetworkManager/Unmanaged.conf
     sudo mv /etc/NetworkManager/NetworkManager.conf /etc/NetworkManager/Managed.conf
     sudo ln -s /etc/NetworkManager/Managed.conf /etc/NetworkManager/NetworkManager.conf
-    sudo network-manager restart
+    sudo restart network-manager
 
     echo "you still need to run installGCS"
     echo "you still need to merge iarc git"

@@ -10,7 +10,7 @@ sudo apt-get update
 sudo apt-get install ros-groovy-desktop python-rosinstall
 sudo rosdep init
 rosdep update
-echo "source /opt/ros/groovy/setup.bash" >> ~/.bashrc
+echo "source /opt/ros/groovy/setup.bash" >> ~/.mybashrc
 source ~/.bashrc
 rm ros_ws/setup*
 rm ros_ws/.rosinstall
