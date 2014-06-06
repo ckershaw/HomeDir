@@ -2,6 +2,10 @@
 " (make sure to back your's up if you want to save it first)
 " in case you haven't noticed, " is the comment character in vim config files
 
+"---------Latex_______--------------------------------------------------
+
+command Ltx w|!pdflatex % && gnome-open %:r.pdf
+
 "---------standard options--------------------------------------------------
 set shiftwidth=4 tabstop=4 
     " tab sizes
@@ -9,37 +13,52 @@ set shiftwidth=4 tabstop=4
     " use line numbers
 
 set expandtab 
+set mouse=a
+
 au FileType make,text :setlocal noexpandtab
     " expand tabs, but only if you are not editing a make file or a txt file
 
+set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
+
 set tabpagemax=25
+set foldmethod=syntax
 
 au BufRead,BufNewFile *.lcm set filetype=c
+    " if reading an lcm file, treat it like a c file
+au BufRead,BufNewFile *.cfg set filetype=c
+    " if reading an lcm file, treat it like a c file
+au BufRead,BufNewFile *.config set filetype=c
     " if reading an lcm file, treat it like a c file
 au BufRead,BufNewFile *.dox set filetype=c
     " if reading an dox file, treat it like a c file
 au FileType c,cpp,java,matlab,sh,make :setlocal cindent
     " if editing some form of code, use c indentation
-au FileType text :setlocal smartindent
+au FileType text :setlocal smartindent 
+au FileType text :set foldmethod=indent 
     " if reading a text file, use smart indenting
 
-set foldmethod=syntax
 inoremap <F1> <C-O>za
 nnoremap <F1> za
 onoremap <F1> <C-C>za
 vnoremap <F1> zf
 
+inoremap <F5> <C-O>:make
+nnoremap <F5> :make
+onoremap <F5> <C-C>:make
+vnoremap <F5> :make
+
 set autochdir 
 
-noremap <F2> <esc>:mksession! <C-R>="~/.vim_session" <CR>
+noremap <F2> <esc>:mksession! <C-R>=".vim_session" <CR>
     " Makes F2 save your vim session to ~/.vim_session (after you press enter)
-noremap <F3> <esc>:source <C-R>="~/.vim_session" <CR>
+noremap <F3> <esc>:source <C-R>=".vim_session" <CR>
     " Makes F3 load the vim session saved by F2 (after you press enter) 
 
 noremap K <nop>
     " disable the shift K command because I hit it and it does annoying things
 
-colorscheme ron "colorscheme elflord 
+colorscheme ron
+"colorscheme elflord 
     " set the best color scheme
 syntax on
     " turn on syntax highlighting
@@ -137,7 +156,7 @@ noremap <silent> x "_x
 au FileType haskell,vhdl,ada let b:comment_leader = '--'
 au FileType vim let b:comment_leader = '"'
 au FileType c,cpp,java let b:comment_leader = '//'
-au FileType sh,make let b:comment_leader = '#'
+au FileType sh,make,r let b:comment_leader = '#'
 au FileType matlab,tex let b:comment_leader = '%'
     "set up comment characters for given filetypes
 

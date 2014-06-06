@@ -1,28 +1,19 @@
-### Ryan Morton's bashrc stuff
-## b/c he was sick of fussing with the .bashrc file when upgrading ubuntu
-# Thus name this something like .mybashrc and put the following in your .bashrc
-# if [ -f ~/.mybashrc ]; then
-#     . ~/.mybashrc
-# fi
-
 #export CLASSPATH=$CLASSPATH:/usr/share/java/gluegen-rt.jar:/usr/local/share/java/lcm.jar:$HOME/april/java/april.jar:./
 
 #export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/april/lib
 
 #alias java='java -ea -server -Djava.library.path=$HOME/april/lib'
 
-
-
-
 # SHELL PROMPT
 function parse_git_dirty {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit (working directory clean)" ]] && echo "*"
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
 }
 function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)]/"
 }
 
-export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[31m\] $(parse_git_branch)\[\033[01;34m\]$\[\033[00m\] '
+export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[31m\] $(parse_git_branch)\[\033[01;34m\]
+$\[\033[00m\] '
 
 # Important Paths
 export JAVA_HOME=/usr
@@ -31,11 +22,12 @@ export APRILHOME=$HOME/april
 export UORCHOME=$HOME/uorc
 export GITHOME=$HOME/myGit
 export SVNHOME=$HOME/mySvn
-export IARCHOME=$HOME/iarc
-export NEECHOME=$HOME/perls-neec
+export IARCHOME=$HOME/maav/iarc
 
 # all jars
 export CLASSPATH=$APRILHOME/java/april.jar
+#export CLASSPATH=$CLASSPATH:$HOME/jhstrom/java/jhstrom.jar
+#export CLASSPATH=$CLASSPATH:$HOME/ledtracker/java/ledtracker.jar
 export CLASSPATH=$CLASSPATH:$UORCHOME/user/java/orc.jar
 export CLASSPATH=$CLASSPATH:$MAGICHOME/java/magic.jar
 export CLASSPATH=$CLASSPATH:/usr/share/java/jzlib.jar
@@ -43,33 +35,37 @@ export CLASSPATH=$CLASSPATH:/usr/share/java/junit.jar
 export CLASSPATH=$CLASSPATH:/usr/share/java/gluegen-rt.jar
 export CLASSPATH=$CLASSPATH:/usr/share/java/jogl.jar
 export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcm.jar
-export CLASSPATH=$CLASSPATH:$IARCHOME/java/iarc.jar
-export CLASSPATH=$CLASSPATH:$NEECHOME/build/share/java/perls_spy.jar
-export CLASSPATH=$CLASSPATH:$NEECHOME/build/share/java/perls_lcmtypes.jar
-export CLASSPATH=$CLASSPATH:/usr/local/share/java/bot2-lcmgl.jar
-export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcmspy_plugins_bot2.jar
-export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcmtypes_bot2-core.jar
-export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcmtypes_bot2-frames.jar
-export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcmtypes_bot2-param.jar
-export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcmtypes_bot2-procman.jar
+#export CLASSPATH=$CLASSPATH:$IARCHOME/java/iarc.jar
+#export CLASSPATH=$CLASSPATH:$NEECHOME/build/share/java/perls_spy.jar
+#export CLASSPATH=$CLASSPATH:$NEECHOME/build/share/java/perls_lcmtypes.jar
+
+#376
+export CLASSPATH=$CLASSPATH:$HOME/JFLAP.jar
+
+export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcm.jar
+export CLASSPATH=$CLASSPATH:$HOME/ngv/java/ngv.jar
+export CLASSPATH=$CLASSPATH:$HOME/dngv/java/dngv.jar
+export CLASSPATH=$CLASSPATH:$HOME/eecs467/java/lcmtypes.jar
+
 export CLASSPATH=$CLASSPATH:.
 
 # Java load library
-export LD_LIBRARY_PATH=$APRILHOME/lib:/usr/lib:/usr/local/lib
+export LD_LIBRARY_PATH=/usr/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/april/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/dngv/lib
 
 # path
 export PATH=$PATH:$APRILHOME/bin
 export PATH=$PATH:$HOME/Utilities/bin
 export PATH=$PATH:/opt/arm/bin
-export PATH=$PATH:$HOME/Android/android-sdk-linux_x86/tools
-export PATH=$PATH:$HOME/Android/android-sdk-linux_x86/platform-tools
 
 # ALIASES
 alias ll='ls -l'
 alias lla='ls -al'
 alias md=mkdir
 alias rd=rmdir
-alias cls=clear
+alias clr=clear
 alias svnst='svn st | grep -v "^?"'
 alias java='java -server -ea'
 alias java-prof='java -client -agentlib:hprof=cpu=samples,depth=8,interval=1,thread=y'
@@ -83,8 +79,10 @@ alias gd='git diff --color'
 alias grep="grep -n --color=auto -I --exclude-dir=\".svn\""
 
 alias mc="make clean"
-alias mcm="make clean; make"
-alias aca="ant clean; ant"
+alias mcm="make clean all"
+alias aca="ant clean build"
+
+alias logdir="/media/35e260f5-5346-4be7-a420-e15b8906023a/logs"
 
 function svndiff () {
   svn diff ${1+"$@"} | colordiff | less -R
@@ -96,4 +94,79 @@ export FIGNORE=CVS:\~:.o:.svn
 
 date
 
+export VX_SHADER_PATH=$HOME/dngv/src/vx/shaders
+export VX_FONT_PATH=$HOME/dngv/data/vx_fonts
 
+
+# Colors
+NORMAL=`echo -e '\033[0m'`
+
+BLACK=`echo -e '\033[0;30m'`
+RED=`echo -e '\033[0;31m'`
+GREEN=`echo -e '\033[0;32m'`
+YELLOW=`echo -e '\033[0;33m'`
+BLUE=`echo -e '\033[0;34m'`
+PURPLE=`echo -e '\033[0;35m'`
+CYAN=`echo -e '\033[0;36m'`
+GRAY=`echo -e '\033[0;37m'`
+
+BOLDGRAY=`echo -e '\033[1;30m'`
+BOLDRED=`echo -e '\033[1;31m'`
+BOLDGREEN=`echo -e '\033[1;32m'`
+BOLDYELLOW=`echo -e '\033[1;33m'`
+BOLDBLUE=`echo -e '\033[1;34m'`
+BOLDPURPLE=`echo -e '\033[1;35m'`
+BOLDCYAN=`echo -e '\033[1;36m'`
+BOLDWHITE=`echo -e '\033[1;37m'`
+
+# make with a touch of highlighting
+function makeh {
+    # colors moved to top of bashrc
+
+    make "$@" 2>&1 | sed \
+        -e "s/^\([ ]*\)\(\[[a-zA-Z0-9\.\_\/-]*\)\(\/bin\/\)\([a-zA-Z0-9\.\_\/-]*\]\)\(.*\)$/$NORMAL\1$PURPLE\2\3\4$NORMAL\5/" \
+        -e "s/^\([ ]*\)\(\[[a-zA-Z0-9\.\_\/-]*\)\(\/lib\/\)\([a-zA-Z0-9\.\_\/-]*\]\)\(.*\)$/$NORMAL\1$PURPLE\2\3\4$NORMAL\5/" \
+        -e "s/^\([ ]*\)\(\[[a-zA-Z0-9\.\_\/-]*\]\)\(.*\)$/$NORMAL\1$GREEN\2$NORMAL\3/" \
+        -e "s/^.*undefined reference to.*$/$PURPLE&$NORMAL/" \
+        -e "s/\(^.*\)\( [Ee]rror[: ]\)\(.*$\)/$BLUE\1$RED\2$BOLDGRAY\3$NORMAL/" \
+        -e "s/\(^.*\)\([Ww]arning[: ]\)\(.*$\)/$BLUE\1$YELLOW\2$BOLDGRAY\3$NORMAL/" \
+        -e "s/^.*: In function .*$/$CYAN&$NORMAL/" \
+        -e "s/^\s*\(make\[.*\]:.*directory\s\+\)\(\`.*'\)\(.*\)$/$BLUE\1$BOLDGRAY\2$NORMAL\3/" \
+        -e "s/^\(gcc\s.*\)$/$YELLOW\1$NORMAL/" \
+        -e "s/^\(g++\s.*\)$/$YELLOW\1$NORMAL/" \
+        -e "s/^\(ld\s.*\)$/$PURPLE\1$NORMAL/" \
+        -e "s/^\(ar\s.*\)$/$PURPLE\1$NORMAL/" \
+        -e "s/^rm -[rf][rf]*.*$/$RED&$NORMAL/"
+
+    return ${PIPESTATUS[0]}
+}
+alias makhe="makeh"
+
+function javahighlight {
+    # colors moved to top of bashrc
+
+    sed \
+        -e "s/\([^a-zA-Z][Ee]rror[^a-zA-Z]\)\(.*\)$/$RED\1$BOLDGRAY\2$NORMAL/" \
+        -e "s/\([^a-zA-Z][Ww]arning[^a-zA-Z]\)\(.*\)$/$YELLOW\1$BOLDGRAY\2$NORMAL/" \
+        -e "s/^\([ ]\+\[javac\] \)\(.*\.java:\)\([0-9]*\)\(.* is not.*\|.* does not.*\|.* expected.*\|.* should be declared.*\|.* cannot find symbol.*\|.* cannot be applied to.*\|.* incompatible types.*\|.* generic array creation.*\|.* missing method body.*\|.* might not have been initialized.*\|.* has private access.*\|.* is already defined.*\|.* is ambiguous.*\|.* non-static.*\|.* unreachable.*\|.* illegal.*\|.* unreported.*\|.* cannot be dereferenced.*\|.* no suitable method.*\|.* not an enclosing class.*\|.* cannot return.*\|.* possible loss of precision.*\|.* array required.*\|.* not a statement.*\|.* foreach not applicable.*\|.* no suitable constructor.*\|.* incomparable types.*\)$/$GREEN\1$YELLOW\2$RED\3$NORMAL\4/" \
+        -e "s/^\([ ]\+\[javac\] \)\(Note:\)\(.*\)$/$GREEN\1$BOLDGRAY\2\3$NORMAL/" \
+        -e "s/^\([ ]\+\[[a-zA-Z0-9\_\.-]\+\]\)\(.*\)$/$GREEN\1$NORMAL\2/" \
+        -e "s/^\(clean[a-zA-Z \_-]*:\)$/$YELLOW\1$NORMAL/" \
+        -e "s/^\(generate[a-zA-Z \_-]*:\)$/$BLUE\1$NORMAL/" \
+        -e "s/^\(build[a-zA-Z \_-]*:\)$/$CYAN\1$NORMAL/" \
+        -e "s/^\([a-zA-Z \_-]\+:\)$/$CYAN\1$NORMAL/" 
+}
+
+function javach {
+    javac "$@" 2>&1 | javahighlight
+
+    return ${PIPESTATUS[0]}
+}
+
+function anth {
+    ant "$@" 2>&1 | javahighlight
+
+    return ${PIPESTATUS[0]}
+}
+
+alias mhja="makeh -j; alert"
