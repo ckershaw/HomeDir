@@ -6,63 +6,154 @@
 
 command Ltx w|!pdflatex % && gnome-open %:r.pdf
 
+inoremap <F4> <C-O>:Ltx
+nnoremap <F4> :Ltx
+onoremap <F4> <C-C>:Ltx
+vnoremap <F4> :Ltx
+
+noremap <F3> :w !detex \| wc <CR>
+
 "---------standard options--------------------------------------------------
-set shiftwidth=4 tabstop=4 
-    " tab sizes
-"set number
-    " use line numbers
+
+set hlsearch
+set noincsearch
+set smartcase
 
 set expandtab 
-set mouse=a
+set shiftwidth=4
+set softtabstop=4
+"set textwidth=80
 
-au FileType make,text :setlocal noexpandtab
-    " expand tabs, but only if you are not editing a make file or a txt file
+set mouse=a
 
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
+set ls=2
+set statusline=%<%F\ %h%m%r%y%=%-14.(%l,%c%V%)\ %P
+
+au FileType make,text :setlocal noexpandtab
+
 set tabpagemax=25
 set foldmethod=syntax
+set foldlevelstart=99
+
+" sudo to write
+cnoremap w!! w !sudo tee % >/dev/nullndif
 
 au BufRead,BufNewFile *.lcm set filetype=c
-    " if reading an lcm file, treat it like a c file
 au BufRead,BufNewFile *.cfg set filetype=c
-    " if reading an lcm file, treat it like a c file
 au BufRead,BufNewFile *.config set filetype=c
-    " if reading an lcm file, treat it like a c file
 au BufRead,BufNewFile *.dox set filetype=c
-    " if reading an dox file, treat it like a c file
-au FileType c,cpp,java,matlab,sh,make :setlocal cindent
-    " if editing some form of code, use c indentation
-au FileType text :setlocal smartindent 
+"au FileType c,cpp,java,matlab,sh,make :setlocal cindent
+"au FileType text :setlocal smartindent 
 au FileType text :set foldmethod=indent 
-    " if reading a text file, use smart indenting
+set autoindent
+filetype plugin indent on
 
+
+set cinoptions=l1,(0,u0,j1
+"remove trailing whitespace from all files
+autocmd BufWritePre * : :%s/\s\+$//e
+
+"Fold
 inoremap <F1> <C-O>za
 nnoremap <F1> za
 onoremap <F1> <C-C>za
 vnoremap <F1> zf
+
+"abbreviations
+iab #i #include
+iab #d #define
+iab teh the
+iab tihs this
+ca maek make
+ca amek make
+ca amke make
+ca amk mak
+ca mka mak
+
+set shellcmdflag=-ic
+
+" Completion
+set wildmode=list:longest
+
+set wildmenu
+set wildignore=*.swp,*.bak,*.d
+set wildignore+=*/.svn/*,/*.hg/*,/*.git/* " Version control
+set wildignore+=*/.virtualenvs/*
+set wildignore+=*.aux,*.out,*.toc " LaTeX stuff
+set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg "Pics
+set wildignore+=*.o,*.obj,*.pyc,*.class "compiled files, bytecode
+set wildignore+=*.DS_Store
+set wildignore+=*.pdf,*.xls,*.xlsx,*.doc
+set wildignore+=*.jar
+
 
 inoremap <F5> <C-O>:make
 nnoremap <F5> :make
 onoremap <F5> <C-C>:make
 vnoremap <F5> :make
 
+"avoid escape!
+:imap jk <Esc>
+:imap Jk <Esc>
+:imap jK <Esc>
+:imap JK <Esc>
+
+"tab next/previous
+map H gT<esc>
+map L gt<esc>
+
+
+"quick edit/source vimrc
+nmap ,v :tabnew ~/.vimrc<return>
+nmap ,s :source ~/.vimrc<return>
+
+nmap ,m :make -j<return>
+
+
+"time out on key codes but not mappings
+set notimeout
+set ttimeout
+set ttimeoutlen=10
+
+"delete gets lot"
+set bs=2
+
+"backups
+set backup
+set backupdir=~/.vim/backup
+set backupext=~
+
+command Make cd `=startdir` | make
+command MakeHere let startdir=getcwd() | Make
 set autochdir 
+
 
 noremap <F2> <esc>:mksession! <C-R>=".vim_session" <CR>
     " Makes F2 save your vim session to ~/.vim_session (after you press enter)
-noremap <F3> <esc>:source <C-R>=".vim_session" <CR>
+"noremap <F3> <esc>:source <C-R>=".vim_session" <CR>
     " Makes F3 load the vim session saved by F2 (after you press enter) 
+
+
 
 noremap K <nop>
     " disable the shift K command because I hit it and it does annoying things
+    "
+set t_Co=256
+set bg=dark
 
-colorscheme ron
+"colorscheme ir_black
+colorscheme wombat256mod
+
+"colorscheme ron
 "colorscheme elflord 
-    " set the best color scheme
+"colorscheme xoria256
+"colorscheme molokai_mac
+"colorscheme peaksea
 syntax on
     " turn on syntax highlighting
-noremap <silent> <C-n> :noh<CR>
+noremap <silent> <C-n> :let @/="azsfaesrgesdsdrswer"<CR>
     " maps ctrl+n to turn off highlighting of words from search
 
 "inoremap {     {}<Left>
@@ -124,14 +215,6 @@ noremap <silent> <C-l> $
     " <C-l> goes to end of line
 noremap <silent> <C-h> ^
     " <C-h> goes to beginning of line
-"noremap <silent> <C-j> L
-    " <C-j> goes to bottom of page
-"noremap <silent> <C-k> H
-    " <C-k> goes to top of page
-noremap <silent> L <nop>
-    " L now does not go to bottom of page (use <C-d> for down)
-noremap <silent> H <nop>
-    " H now does not go to top of page (use <C-u> for up)
 inoremap <silent> <C-l> <esc>A
     " <C-l> goes to end of line in insert mode
 inoremap <silent> <C-h> <esc>^i
@@ -153,16 +236,19 @@ noremap <silent> x "_x
     " overwrite things in the default paste buffer
 
 "-------comments ------------------------------------------------------------
+let b:comment_leader = '//'
+au FileType c,cpp,java let b:comment_leader = '//'
 au FileType haskell,vhdl,ada let b:comment_leader = '--'
 au FileType vim let b:comment_leader = '"'
-au FileType c,cpp,java let b:comment_leader = '//'
-au FileType sh,make,r let b:comment_leader = '#'
+au FileType sh,make,r,python let b:comment_leader = '#'
 au FileType matlab,tex let b:comment_leader = '%'
     "set up comment characters for given filetypes
 
+"noremap ,c :call Comment()<CR>
+"noremap ,u :call UnComment()<CR>
+
 noremap <silent> ,c :<C-B>sil <C-E>s/^\(\s*\)/\1<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:noh<CR>
 noremap <silent> ,u :<C-B>sil <C-E>s/^\(\s*\)\V<C-R>=escape(b:comment_leader,'\/')<CR>/\1/e<CR>:noh<CR>
-    " maps ,c to comment out a line/section and ,u to uncomment a line/section
 
 "-------tags----------------------------------------------------------------
 set tags=./tags;/
@@ -186,7 +272,19 @@ noremap <silent> t<C-k> <esc>:tab split<CR>:exec("tselect ".expand("<cword>"))<C
 noremap <silent> t<A-k> <esc>:vsp <CR>:exec("tselect ".expand("<cword>"))<CR>
     " t<A-k> opens the tselect of the tag in a vsplit window
 
-"-------Highlight Overlength------------------------------------------------
-if exists('+colorcolumn')
-    set colorcolumn=81
-endif
+"------DICT----------------
+set dictionary-=/usr/share/dict/words 
+set dictionary+=/usr/share/dict/words
+
+set complete-=k 
+set complete+=k
+
+set completeopt=longest,menuone
+
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'

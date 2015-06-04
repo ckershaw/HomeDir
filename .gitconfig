@@ -4,3 +4,11 @@
 
 [merge]
     tool = vimdiff
+
+[core]
+    editor = vim
+[push]
+	default = simple
+[alias]
+    ci = commit
+    st = status

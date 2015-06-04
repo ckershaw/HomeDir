@@ -15,38 +15,37 @@ function parse_git_branch {
 export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[31m\] $(parse_git_branch)\[\033[01;34m\]
 $\[\033[00m\] '
 
+#Append history
+HISTCONTROL=ignoredups:ignorespace
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+#Vi input mode
+set -o vi
+
 # Important Paths
 export JAVA_HOME=/usr
+export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64/
 export MAGICHOME=$HOME/magic
 export APRILHOME=$HOME/april
 export UORCHOME=$HOME/uorc
 export GITHOME=$HOME/myGit
 export SVNHOME=$HOME/mySvn
 export IARCHOME=$HOME/maav/iarc
+export BLOCKS_HOME=$HOME/blocks
+
 
 # all jars
-export CLASSPATH=$APRILHOME/java/april.jar
+#export CLASSPATH=$CLASSPATH:$APRILHOME/java/april.jar
 #export CLASSPATH=$CLASSPATH:$HOME/jhstrom/java/jhstrom.jar
 #export CLASSPATH=$CLASSPATH:$HOME/ledtracker/java/ledtracker.jar
-export CLASSPATH=$CLASSPATH:$UORCHOME/user/java/orc.jar
-export CLASSPATH=$CLASSPATH:$MAGICHOME/java/magic.jar
-export CLASSPATH=$CLASSPATH:/usr/share/java/jzlib.jar
-export CLASSPATH=$CLASSPATH:/usr/share/java/junit.jar
-export CLASSPATH=$CLASSPATH:/usr/share/java/gluegen-rt.jar
-export CLASSPATH=$CLASSPATH:/usr/share/java/jogl.jar
+export CLASSPATH=
 export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcm.jar
-#export CLASSPATH=$CLASSPATH:$IARCHOME/java/iarc.jar
-#export CLASSPATH=$CLASSPATH:$NEECHOME/build/share/java/perls_spy.jar
-#export CLASSPATH=$CLASSPATH:$NEECHOME/build/share/java/perls_lcmtypes.jar
-
-#376
-export CLASSPATH=$CLASSPATH:$HOME/JFLAP.jar
-
+export CLASSPATH=$CLASSPATH:/home/ckershaw/perls/trunk/build/share/java/perls_lcmtypes.jar
 export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcm.jar
 export CLASSPATH=$CLASSPATH:$HOME/ngv/java/ngv.jar
 export CLASSPATH=$CLASSPATH:$HOME/dngv/java/dngv.jar
-export CLASSPATH=$CLASSPATH:$HOME/eecs467/java/lcmtypes.jar
-
 export CLASSPATH=$CLASSPATH:.
 
 # Java load library
@@ -94,8 +93,8 @@ export FIGNORE=CVS:\~:.o:.svn
 
 date
 
-export VX_SHADER_PATH=$HOME/dngv/src/vx/shaders
-export VX_FONT_PATH=$HOME/dngv/data/vx_fonts
+export VX_SHADER_PATH=$HOME/magic2/src/vx/shaders
+export VX_FONT_PATH=$HOME/magic2/src/vx/fonts
 
 
 # Colors
