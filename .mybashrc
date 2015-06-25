@@ -1,8 +1,17 @@
-#export CLASSPATH=$CLASSPATH:/usr/share/java/gluegen-rt.jar:/usr/local/share/java/lcm.jar:$HOME/april/java/april.jar:./
-
-#export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/april/lib
-
-#alias java='java -ea -server -Djava.library.path=$HOME/april/lib'
+#f () {
+#    errcode=$? # save the exit code as the first thing done in the trap function
+#    echo "error $errorcode" >> /tmp/bserr
+#    echo "the command executing at the time of the error was" >> /tmp/bserr
+#    echo "$BASH_COMMAND" >> /tmp/bserr
+#    echo "on line ${BASH_LINENO[0]}" >> /tmp/bserr
+#    # do some error handling, cleanup, logging, notification
+#    # $BASH_COMMAND contains the command that was being executed at the time of the trap
+#    # ${BASH_LINENO[0]} contains the line number in the script of that command
+#    # exit the script or return to try again, etc.
+#    # exit $errcode  # or use some other value or do return instead
+#}
+#
+#trap f ERR
 
 # SHELL PROMPT
 function parse_git_dirty {
@@ -21,31 +30,28 @@ HISTCONTROL=ignoredups:ignorespace
 # append to the history file, don't overwrite it
 shopt -s histappend
 
-#Vi input mode
-set -o vi
+##Vi input mode
+#set -o vi
 
 # Important Paths
-export JAVA_HOME=/usr
 export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64/
-export MAGICHOME=$HOME/magic
-export APRILHOME=$HOME/april
-export UORCHOME=$HOME/uorc
-export GITHOME=$HOME/myGit
-export SVNHOME=$HOME/mySvn
-export IARCHOME=$HOME/maav/iarc
-export BLOCKS_HOME=$HOME/blocks
+export MAGIC2=$HOME/magic2
+
+export ROBOT_CONFIG=/home/ckershaw/magic2/config/robot.config
+export VX_SHADER_PATH=/home/ckershaw/magic2/src/vx/shaders/
+export VX_FONT_PATH=/home/ckershaw/magic2/src/vx/fonts/
+export WEBVX_HTML_PATH=/home/ckershaw/magic2/src/jsvx/webvx_html
+
 
 
 # all jars
-#export CLASSPATH=$CLASSPATH:$APRILHOME/java/april.jar
-#export CLASSPATH=$CLASSPATH:$HOME/jhstrom/java/jhstrom.jar
-#export CLASSPATH=$CLASSPATH:$HOME/ledtracker/java/ledtracker.jar
 export CLASSPATH=
 export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcm.jar
 export CLASSPATH=$CLASSPATH:/home/ckershaw/perls/trunk/build/share/java/perls_lcmtypes.jar
 export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcm.jar
 export CLASSPATH=$CLASSPATH:$HOME/ngv/java/ngv.jar
 export CLASSPATH=$CLASSPATH:$HOME/dngv/java/dngv.jar
+export CLASSPATH=$CLASSPATH:$HOME/magic2/java/magic2.jar
 export CLASSPATH=$CLASSPATH:.
 
 # Java load library
@@ -75,7 +81,7 @@ alias 'cd..'='cd ..'
 alias gitup='git remote update'
 alias gitst='git status'
 alias gd='git diff --color'
-alias grep="grep -n --color=auto -I --exclude-dir=\".svn\""
+alias grep="grep -n --color=auto -I"
 
 alias mc="make clean"
 alias mcm="make clean all"
@@ -92,10 +98,6 @@ alias viewer='BASE_STATION_ID=103 java $JOPTS april.viewer.Viewer --config $HOME
 export FIGNORE=CVS:\~:.o:.svn
 
 date
-
-export VX_SHADER_PATH=$HOME/magic2/src/vx/shaders
-export VX_FONT_PATH=$HOME/magic2/src/vx/fonts
-
 
 # Colors
 NORMAL=`echo -e '\033[0m'`
@@ -153,7 +155,7 @@ function javahighlight {
         -e "s/^\(clean[a-zA-Z \_-]*:\)$/$YELLOW\1$NORMAL/" \
         -e "s/^\(generate[a-zA-Z \_-]*:\)$/$BLUE\1$NORMAL/" \
         -e "s/^\(build[a-zA-Z \_-]*:\)$/$CYAN\1$NORMAL/" \
-        -e "s/^\([a-zA-Z \_-]\+:\)$/$CYAN\1$NORMAL/" 
+        -e "s/^\([a-zA-Z \_-]\+:\)$/$CYAN\1$NORMAL/"
 }
 
 function javach {

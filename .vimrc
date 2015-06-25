@@ -19,7 +19,7 @@ set hlsearch
 set noincsearch
 set smartcase
 
-set expandtab 
+set expandtab
 set shiftwidth=4
 set softtabstop=4
 "set textwidth=80
@@ -45,8 +45,8 @@ au BufRead,BufNewFile *.cfg set filetype=c
 au BufRead,BufNewFile *.config set filetype=c
 au BufRead,BufNewFile *.dox set filetype=c
 "au FileType c,cpp,java,matlab,sh,make :setlocal cindent
-"au FileType text :setlocal smartindent 
-au FileType text :set foldmethod=indent 
+"au FileType text :setlocal smartindent
+au FileType text :set foldmethod=indent
 set autoindent
 filetype plugin indent on
 
@@ -127,13 +127,13 @@ set backupext=~
 
 command Make cd `=startdir` | make
 command MakeHere let startdir=getcwd() | Make
-set autochdir 
+set autochdir
 
 
 noremap <F2> <esc>:mksession! <C-R>=".vim_session" <CR>
     " Makes F2 save your vim session to ~/.vim_session (after you press enter)
 "noremap <F3> <esc>:source <C-R>=".vim_session" <CR>
-    " Makes F3 load the vim session saved by F2 (after you press enter) 
+    " Makes F3 load the vim session saved by F2 (after you press enter)
 
 
 
@@ -147,7 +147,7 @@ set bg=dark
 colorscheme wombat256mod
 
 "colorscheme ron
-"colorscheme elflord 
+"colorscheme elflord
 "colorscheme xoria256
 "colorscheme molokai_mac
 "colorscheme peaksea
@@ -160,7 +160,7 @@ noremap <silent> <C-n> :let @/="azsfaesrgesdsdrswer"<CR>
 inoremap {<CR> {<CR>}<Esc>O
 "inoremap {{    {
 "inoremap {}    {}
-    " remapping that makes { form an auto closed pair either on the 
+    " remapping that makes { form an auto closed pair either on the
     " same line or the next if you hit enter fast enough
 
 inoremap <silent> <C-d> <esc>ddko
@@ -172,13 +172,13 @@ inoremap <silent> <C-f> <esc>kJi
 
 "---------resizing splits----------------------------------------------------
 noremap = <esc><C-w>>
-    " = increase size of vertically split window  
+    " = increase size of vertically split window
 noremap - <esc><C-w><
-    " - decrease size of vertically split window  
+    " - decrease size of vertically split window
 noremap + <esc><C-w>+
-    " + increase size of horizontally split window  
+    " + increase size of horizontally split window
 noremap _ <esc><C-w>-
-    " _ decrease size of horizontally split window  
+    " _ decrease size of horizontally split window
 
 "----------moving between tabs and splits------------------------------------
 noremap gh <esc><C-w><Left>
@@ -232,12 +232,12 @@ noremap <silent> cc <esc>:ccl<CR>
 
 "---------don't fill buffer with single char delete-------------------------
 noremap <silent> x "_x
-    " sends characters deleted with x to the null buffer so they don't 
+    " sends characters deleted with x to the null buffer so they don't
     " overwrite things in the default paste buffer
 
 "-------comments ------------------------------------------------------------
 let b:comment_leader = '//'
-au FileType c,cpp,java let b:comment_leader = '//'
+au FileType c,cpp,java,javascript let b:comment_leader = '//'
 au FileType haskell,vhdl,ada let b:comment_leader = '--'
 au FileType vim let b:comment_leader = '"'
 au FileType sh,make,r,python let b:comment_leader = '#'
@@ -273,10 +273,10 @@ noremap <silent> t<A-k> <esc>:vsp <CR>:exec("tselect ".expand("<cword>"))<CR>
     " t<A-k> opens the tselect of the tag in a vsplit window
 
 "------DICT----------------
-set dictionary-=/usr/share/dict/words 
+set dictionary-=/usr/share/dict/words
 set dictionary+=/usr/share/dict/words
 
-set complete-=k 
+set complete-=k
 set complete+=k
 
 set completeopt=longest,menuone

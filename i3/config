@@ -186,19 +186,20 @@ mode "resize" {
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize shrink height 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
         bindsym Shift+h resize shrink width 1 px or 1 ppt
-        bindsym Shift+j resize shrink height 1 px or 1 ppt
-        bindsym Shift+k resize grow height 1 px or 1 ppt
+        bindsym Shift+k resize shrink height 1 px or 1 ppt
+        bindsym Shift+j resize grow height 1 px or 1 ppt
         bindsym Shift+l resize grow width 1 px or 1 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize shrink height 10 px or 10 ppt
-        bindsym Up resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+
+        bindsym Down resize grow height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape or mod+r again
@@ -268,14 +269,18 @@ focus_follows_mouse no
 
 # startup programs
 exec --no-startup-id synapse -s
-#exec feh --bg-fill /home/ryan/Pictures/photos/2014/12/16/darktable_exported/IMG_2419_01.jpg
-#exec feh --bg-fill /home/ryan/Pictures/photos/2015/02/15/darktable_exported/IMG_3592.jpg
 exec --no-startup-id nm-applet
 exec --no-startup-id gnome-sound-applet
-#exec --no-startup-id gnome-settings-daemon
+exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id indicator-cpufreq
 exec --no-startup-id setxkbmap -option caps:none
 exec --no-startup-id synclient VertScrollDelta=-111
+exec --no-startup-id xsetroot -solid "#333333"
+exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/gnome-terminal'
+exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/gnome-terminal'
+exec --no-startup-id i3-msg 'workspace 4; exec /usr/bin/gnome-terminal'
+exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/google-chrome'
+
 
 bar {
     status_command  i3blocks -c ~/.i3/i3blocks.conf
