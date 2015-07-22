@@ -48,6 +48,7 @@ hide_edge_borders both
 #bindsym $mod+backslash exec ~/.i3/scripts/rename.py
 bindsym $mod+backslash exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
+new_window 1pixel
 
 
 #############################################################
@@ -259,7 +260,7 @@ bindsym XF86HomePage exec nemo
 
 # open these windows floating
 for_window [class="^Spotify$"] floating enable
-for_window [class="^gnome-calculator$"] floating enable
+for_window [class="^Gcalctool$"] floating enable
 for_window [class="^Google-chrome$" title="^MightyText$"] floating enable
 for_window [class="^Google-chrome-stable$" title="^MightyText$"] floating enable
 #for_window [title="^LogPlayer$"] floating enable
@@ -277,8 +278,6 @@ exec --no-startup-id setxkbmap -option caps:none
 exec --no-startup-id synclient VertScrollDelta=-111
 exec --no-startup-id xsetroot -solid "#333333"
 exec --no-startup-id i3-msg 'workspace 2; exec /usr/bin/gnome-terminal'
-exec --no-startup-id i3-msg 'workspace 3; exec /usr/bin/gnome-terminal'
-exec --no-startup-id i3-msg 'workspace 4; exec /usr/bin/gnome-terminal'
 exec --no-startup-id i3-msg 'workspace 1; exec /usr/bin/google-chrome'
 
 

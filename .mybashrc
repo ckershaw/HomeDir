@@ -47,11 +47,17 @@ export WEBVX_HTML_PATH=/home/ckershaw/magic2/src/jsvx/webvx_html
 # all jars
 export CLASSPATH=
 export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcm.jar
-export CLASSPATH=$CLASSPATH:/home/ckershaw/perls/trunk/build/share/java/perls_lcmtypes.jar
-export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcm.jar
+export CLASSPATH=$CLASSPATH:$HOME/perls/trunk/build/share/java/perls_lcmtypes.jar
 export CLASSPATH=$CLASSPATH:$HOME/ngv/java/ngv.jar
+export CLASSPATH=$CLASSPATH:$HOME/april/java/april.jar
 export CLASSPATH=$CLASSPATH:$HOME/dngv/java/dngv.jar
 export CLASSPATH=$CLASSPATH:$HOME/magic2/java/magic2.jar
+
+export CLASSPATH=$CLASSPATH:/usr/share/java/gluegen-rt.jar
+export CLASSPATH=$CLASSPATH:/usr/share/java/jogl.jar
+export CLASSPATH=$CLASSPATH:$HOME/worldwind/worldwind.jar
+export CLASSPATH=$CLASSPATH:$HOME/worldwind/worldwindx.jar
+
 export CLASSPATH=$CLASSPATH:.
 
 # Java load library

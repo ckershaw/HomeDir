@@ -37,6 +37,10 @@ set tabpagemax=25
 set foldmethod=syntax
 set foldlevelstart=99
 
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+match ExtraWhitespace /\s\+$/ " Match trailing whitespac
+
 " sudo to write
 cnoremap w!! w !sudo tee % >/dev/nullndif
 
