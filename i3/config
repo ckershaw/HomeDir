@@ -303,8 +303,9 @@ bindsym Control+Shift+o exec xdotool key --clearmodifiers --delay 0 XF86AudioNex
 bindsym Control+Shift+p exec xdotool key --clearmodifiers --delay 0 XF86AudioPlay
 
 # mode control for lock/suspend/etc
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown, (o) screenoff
 mode "$mode_system" {
+    bindsym o exec --no-startup-id ~/.i3/scripts/i3-mode-system.sh screenoff, mode "default"
     bindsym l exec --no-startup-id ~/.i3/scripts/i3-mode-system.sh lock, mode "default"
     bindsym e exec --no-startup-id ~/.i3/scripts/i3-mode-system.sh logout, mode "default"
     bindsym s exec --no-startup-id ~/.i3/scripts/i3-mode-system.sh suspend, mode "default"

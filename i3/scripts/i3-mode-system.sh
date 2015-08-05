@@ -8,6 +8,9 @@ case "$1" in
     lock)
         lock
         ;;
+    screenoff)
+        lock && sleep 1 && xset dpms force off;
+        ;;
     logout)
         i3-msg exit
         ;;
@@ -24,7 +27,7 @@ case "$1" in
         dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop
         ;;
     *)
-        echo "Usage: $0 {lock|logout|suspend|hibernate|reboot|shutdown}"
+        echo "Usage: $0 {lock|logout|suspend|hibernate|reboot|shutdown|screenoff}"
         exit 2
 esac
 
