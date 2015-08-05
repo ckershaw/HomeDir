@@ -48,7 +48,7 @@ hide_edge_borders both
 #bindsym $mod+backslash exec ~/.i3/scripts/rename.py
 bindsym $mod+backslash exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
-new_window 1pixel
+#new_window 1pixel
 
 
 #############################################################
@@ -119,8 +119,11 @@ bindsym $mod+c focus child
 # {
 
 # move workspace to output left/right
-bindsym $mod+o move workspace to output left
-bindsym $mod+p move workspace to output right
+bindsym $mod+o move workspace to output up
+bindsym $mod+p move workspace to output down
+
+bindsym $mod+Shift+o move container to output up; focus output up
+bindsym $mod+Shift+p move container to output down; focus output down
 
 # workspace names/labels
 #bindsym $mod+c workspace chrome
@@ -270,6 +273,7 @@ focus_follows_mouse no
 
 # startup programs
 exec --no-startup-id synapse -s
+exec --no-startup-id xrandr --output DP-1 --auto --above LVDS-1
 exec --no-startup-id nm-applet
 exec --no-startup-id gnome-sound-applet
 exec --no-startup-id gnome-settings-daemon

@@ -30,6 +30,8 @@ set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
 set ls=2
 set statusline=%<%F\ %h%m%r%y%=%-14.(%l,%c%V%)\ %P
+:let g:buftabs_in_statusline=1
+
 
 au FileType make,text :setlocal noexpandtab
 
@@ -105,8 +107,10 @@ vnoremap <F5> :make
 :imap JK <Esc>
 
 "tab next/previous
-map H gT<esc>
-map L gt<esc>
+map H :bp!<CR>
+map L :bn!<CR>
+noremap <C-PageUp> :bp!<CR>
+noremap <C-PageDown> :bn!<CR>
 
 
 "quick edit/source vimrc
@@ -185,6 +189,10 @@ noremap _ <esc><C-w>-
     " _ decrease size of horizontally split window
 
 "----------moving between tabs and splits------------------------------------
+noremap gu <esc>gT
+    " gu moves left one tab
+noremap gi <esc>gt
+    " gi moves right one tab
 noremap gh <esc><C-w><Left>
     " gh moves left one vertically split window
 noremap gH <esc><C-w><Left>
@@ -195,10 +203,6 @@ noremap gj <esc><C-w><Down>
     " gj moves down one horizontally split window
 noremap gk <esc><C-w><Up>
     " gk moves up one horizontally split window
-noremap gu <esc>gT
-    " gu moves left one tab
-noremap gi <esc>gt
-    " gi moves right one tab
 
 "----------opening tabs and splits------------------------------------------
 noremap <silent> g<C-e> <esc>:Ex<CR>

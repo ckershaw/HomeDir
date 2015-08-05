@@ -37,10 +37,10 @@ shopt -s histappend
 export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64/
 export MAGIC2=$HOME/magic2
 
-export ROBOT_CONFIG=/home/ckershaw/magic2/config/robot.config
-export VX_SHADER_PATH=/home/ckershaw/magic2/src/vx/shaders/
-export VX_FONT_PATH=/home/ckershaw/magic2/src/vx/fonts/
-export WEBVX_HTML_PATH=/home/ckershaw/magic2/src/jsvx/webvx_html
+export ROBOT_CONFIG=$HOME/magic2/config/robot.config
+export VX_SHADER_PATH=$HOME/magic2/src/vx/shaders/
+export VX_FONT_PATH=$HOME/magic2/src/vx/fonts/
+export WEBVX_HTML_PATH=$HOME/magic2/src/jsvx/webvx_html
 
 
 
