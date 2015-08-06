@@ -41,6 +41,7 @@ export ROBOT_CONFIG=$HOME/magic2/config/robot.config
 export VX_SHADER_PATH=$HOME/magic2/src/vx/shaders/
 export VX_FONT_PATH=$HOME/magic2/src/vx/fonts/
 export WEBVX_HTML_PATH=$HOME/magic2/src/jsvx/webvx_html
+export GIT_EDITOR=vim
 
 
 
