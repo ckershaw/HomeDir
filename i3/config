@@ -294,6 +294,7 @@ bar {
 }
 
 
+bindsym $mod+Shift+s exec ~/.i3/scripts/floatshot.sh
 
 # custom media key bindings
 bindsym Control+Shift+u exec xdotool key --clearmodifiers --delay 0 XF86AudioLowerVolume

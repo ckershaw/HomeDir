@@ -48,16 +48,16 @@ export GIT_EDITOR=vim
 # all jars
 export CLASSPATH=
 export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcm.jar
-export CLASSPATH=$CLASSPATH:$HOME/perls/trunk/build/share/java/perls_lcmtypes.jar
-export CLASSPATH=$CLASSPATH:$HOME/ngv/java/ngv.jar
+#export CLASSPATH=$CLASSPATH:$HOME/perls/trunk/build/share/java/perls_lcmtypes.jar
+#export CLASSPATH=$CLASSPATH:$HOME/ngv/java/ngv.jar
 export CLASSPATH=$CLASSPATH:$HOME/april/java/april.jar
-export CLASSPATH=$CLASSPATH:$HOME/dngv/java/dngv.jar
+#export CLASSPATH=$CLASSPATH:$HOME/dngv/java/dngv.jar
 export CLASSPATH=$CLASSPATH:$HOME/magic2/java/magic2.jar
 
-export CLASSPATH=$CLASSPATH:/usr/share/java/gluegen-rt.jar
-export CLASSPATH=$CLASSPATH:/usr/share/java/jogl.jar
-export CLASSPATH=$CLASSPATH:$HOME/worldwind/worldwind.jar
-export CLASSPATH=$CLASSPATH:$HOME/worldwind/worldwindx.jar
+#export CLASSPATH=$CLASSPATH:/usr/share/java/gluegen-rt.jar
+#export CLASSPATH=$CLASSPATH:/usr/share/java/jogl.jar
+#export CLASSPATH=$CLASSPATH:$HOME/worldwind/worldwind.jar
+#export CLASSPATH=$CLASSPATH:$HOME/worldwind/worldwindx.jar
 
 export CLASSPATH=$CLASSPATH:.
 
@@ -93,8 +93,6 @@ alias grep="grep -n --color=auto -I"
 alias mc="make clean"
 alias mcm="make clean all"
 alias aca="ant clean build"
-
-alias logdir="/media/35e260f5-5346-4be7-a420-e15b8906023a/logs"
 
 function svndiff () {
   svn diff ${1+"$@"} | colordiff | less -R
