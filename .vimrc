@@ -32,6 +32,8 @@ set ls=2
 set statusline=%<%F\ %h%m%r%y%=%-14.(%l,%c%V%)\ %P
 :let g:buftabs_in_statusline=1
 
+nmap ,d :b#<bar>bd#<cr>
+
 
 au FileType make,text :setlocal noexpandtab
 
@@ -296,3 +298,5 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+
