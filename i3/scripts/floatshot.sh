@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PIC="/tmp/$RANDOM.png"
+PIC=`date "+/tmp/%Y-%m-%d_%H:%M:%S.png"`
 
 scrot -s $PIC
 

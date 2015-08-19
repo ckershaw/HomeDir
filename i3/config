@@ -261,6 +261,9 @@ bindsym XF86Explorer exec google-chrome
 bindsym XF86Mail exec thunderbird -compose
 bindsym XF86HomePage exec nemo
 
+
+bindsym $mod+Print exec ~/.i3/scripts/floatshot.sh;
+
 # open these windows floating
 for_window [class="^Spotify$"] floating enable
 for_window [class="^Gcalctool$"] floating enable
@@ -293,8 +296,6 @@ bar {
     workspace_buttons yes
 }
 
-
-bindsym $mod+Shift+s exec ~/.i3/scripts/floatshot.sh
 
 # custom media key bindings
 bindsym Control+Shift+u exec xdotool key --clearmodifiers --delay 0 XF86AudioLowerVolume
