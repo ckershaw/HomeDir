@@ -92,9 +92,9 @@ bindsym $mod+m split v
 bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+t layout tabbed
-bindsym $mod+e layout toggle split
+#bindsym $mod+s layout stacking
+#bindsym $mod+t layout tabbed
+#bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -107,6 +107,15 @@ bindsym $mod+a focus parent
 
 # focus the child container
 bindsym $mod+c focus child
+
+#aatempt screenshot
+bindsym $mod+Print exec ~/.i3/scripts/floatshot.sh;
+
+#toggle border
+bindsym $mod+b border toggle
+
+#refresh monitor state
+bindsym $mod+s exec xrandr --output DP-1 --auto --above LVDS-1
 
 # }
 
@@ -213,36 +222,6 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
-
-
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-#bar {
-#    status_command    i3status
-#    position          bottom
-#    workspace_buttons yes
-#    tray_output       none
-#
-#    font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-#
-#    colors {
-#        background #000000
-#        statusline #ffffff
-#
-#        focused_workspace  #ffffff #285577
-#        active_workspace   #ffffff #333333
-#        inactive_workspace #888888 #222222
-#        urgent_workspace   #ffffff #900000
-#    }
-#}
-
-# colors
-#client.focused          #44bbff #3276E8 #ffffff #cccccc
-#client.focused_inactive #333333 #5f676a #ffffff #484e50
-#client.unfocused        #333333 #222222 #888888 #292d2e
-#client.urgent           #2f343a #900000 #ffffff #900000
-
 # volume
 bindsym XF86AudioRaiseVolume exec amixer -q set Master 10%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 10%- unmute
@@ -260,6 +239,9 @@ bindsym XF86Calculator exec gnome-calculator
 bindsym XF86Explorer exec google-chrome
 bindsym XF86Mail exec thunderbird -compose
 bindsym XF86HomePage exec nemo
+
+
+
 
 # open these windows floating
 for_window [class="^Spotify$"] floating enable
@@ -293,8 +275,6 @@ bar {
     workspace_buttons yes
 }
 
-
-bindsym $mod+Shift+s exec ~/.i3/scripts/floatshot.sh
 
 # custom media key bindings
 bindsym Control+Shift+u exec xdotool key --clearmodifiers --delay 0 XF86AudioLowerVolume

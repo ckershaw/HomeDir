@@ -1,14 +1,15 @@
 [user]
-	email = ckershaw@umich.com
+	email = ckershaw@umich.edu
 	name = Carl Kershaw
-
-[merge]
-    tool = vimdiff
-
-[core]
-    editor = vim
+[alias]
+	st = status
+	co = checkout
+	ci = commit
+	br = branch
+	last = log -1 HEAD
 [push]
 	default = simple
-[alias]
-    ci = commit
-    st = status
+[core]
+	editor = vim
+[merge]
+	tool = vim
