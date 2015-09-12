@@ -2,6 +2,8 @@
 " (make sure to back your's up if you want to save it first)
 " in case you haven't noticed, " is the comment character in vim config files
 
+filetype plugin on
+
 "---------Latex_______--------------------------------------------------
 
 command Ltx w|!pdflatex % && gnome-open %:r.pdf
@@ -135,17 +137,6 @@ set backup
 set backupdir=~/.vim/backup
 set backupext=~
 
-command Make cd `=startdir` | make
-command MakeHere let startdir=getcwd() | Make
-set autochdir
-
-
-noremap <F2> <esc>:mksession! <C-R>=".vim_session" <CR>
-    " Makes F2 save your vim session to ~/.vim_session (after you press enter)
-"noremap <F3> <esc>:source <C-R>=".vim_session" <CR>
-    " Makes F3 load the vim session saved by F2 (after you press enter)
-
-
 
 noremap K <nop>
     " disable the shift K command because I hit it and it does annoying things
@@ -153,32 +144,14 @@ noremap K <nop>
 set t_Co=256
 set bg=dark
 
-"colorscheme ir_black
 colorscheme wombat256mod
 
-"colorscheme ron
-"colorscheme elflord
-"colorscheme xoria256
-"colorscheme molokai_mac
-"colorscheme peaksea
 syntax on
-    " turn on syntax highlighting
 noremap <silent> <C-n> :let @/="azsfaesrgesdsdrswer"<CR>
-    " maps ctrl+n to turn off highlighting of words from search
 
-"inoremap {     {}<Left>
 inoremap {<CR> {<CR>}<Esc>O
-"inoremap {{    {
-"inoremap {}    {}
-    " remapping that makes { form an auto closed pair either on the
-    " same line or the next if you hit enter fast enough
-
 inoremap <silent> <C-d> <esc>ddko
-    " maps ctrl+d in insert mode to delete your current line and append to the
-    " one above it
 inoremap <silent> <C-f> <esc>kJi
-    " maps ctrl+f in insert mode to merge your current line with the
-    " one above it
 
 "---------resizing splits----------------------------------------------------
 noremap = <esc><C-w>>
@@ -242,8 +215,6 @@ noremap <silent> cc <esc>:ccl<CR>
 
 "---------don't fill buffer with single char delete-------------------------
 noremap <silent> x "_x
-    " sends characters deleted with x to the null buffer so they don't
-    " overwrite things in the default paste buffer
 
 "-------comments ------------------------------------------------------------
 let b:comment_leader = '//'
