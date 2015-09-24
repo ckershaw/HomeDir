@@ -2,6 +2,7 @@
 " (make sure to back your's up if you want to save it first)
 " in case you haven't noticed, " is the comment character in vim config files
 
+set nospell
 filetype plugin on
 
 "---------Latex_______--------------------------------------------------
@@ -138,9 +139,9 @@ set backupdir=~/.vim/backup
 set backupext=~
 
 
+" disable the shift K command because I hit it and it does annoying things
 noremap K <nop>
-    " disable the shift K command because I hit it and it does annoying things
-    "
+
 set t_Co=256
 set bg=dark
 
@@ -200,18 +201,18 @@ noremap <silent> <C-h> ^
     " <C-h> goes to beginning of line
 inoremap <silent> <C-l> <esc>A
     " <C-l> goes to end of line in insert mode
-inoremap <silent> <C-h> <esc>^i
+inoremap <silent> <C-h> <esc>
     " <C-h> goes to beginning of line in insert mode
 
 "---------compiler error window---------------------------------------------
 noremap <silent> cn <esc>:cn<CR>
-    " cn goes to the next compiler error (must compile with :make in vim)
+    " cn goes to the next compiler error
 noremap <silent> cp <esc>:cp<CR>
-    " cp goes to the previous compiler error (must compile with :make in vim)
+    " cp goes to the previous compiler error
 noremap <silent> cw <esc>:cw<CR>
-    " cw opens the compiler output window (must compile with :make in vim)
+    " cw opens the compiler output window
 noremap <silent> cc <esc>:ccl<CR>
-    " cc closes the compiler output window (must compile with :make in vim)
+    " cc closes the compiler output window
 
 "---------don't fill buffer with single char delete-------------------------
 noremap <silent> x "_x
@@ -223,10 +224,6 @@ au FileType haskell,vhdl,ada let b:comment_leader = '--'
 au FileType vim let b:comment_leader = '"'
 au FileType sh,make,r,python let b:comment_leader = '#'
 au FileType matlab,tex let b:comment_leader = '%'
-    "set up comment characters for given filetypes
-
-"noremap ,c :call Comment()<CR>
-"noremap ,u :call UnComment()<CR>
 
 noremap <silent> ,c :<C-B>sil <C-E>s/^\(\s*\)/\1<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:noh<CR>
 noremap <silent> ,u :<C-B>sil <C-E>s/^\(\s*\)\V<C-R>=escape(b:comment_leader,'\/')<CR>/\1/e<CR>:noh<CR>
@@ -240,16 +237,12 @@ noremap <silent> tJ <esc>:exec("tag ".expand("<cword>"))<CR>
     " tJ to open the tag
 noremap <silent> tj <esc>:exec("ptag ".expand("<cword>"))<CR>
     " tj preview the tag
-noremap <silent> t<C-j> <esc>:tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-    " t<C-j> opens the destination of following the tag in a new tab
-noremap <silent> t<A-j> <esc>:vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+noremap <silent> ts <esc>:vsp <CR>:exec("tag ".expand("<cword>"))<CR>
     " t<A-j> opens the destination of following the tag in a vsplit window
 noremap <silent> tK <esc>:exec("tselect ".expand("<cword>"))<CR>
     " tK executes tag select
 noremap <silent> tk <esc>:exec("ptselect ".expand("<cword>"))<CR>
     " tk previews the tag select
-noremap <silent> t<C-k> <esc>:tab split<CR>:exec("tselect ".expand("<cword>"))<CR>
-    " t<C-k> opens the tselect of the tag in a new tab
 noremap <silent> t<A-k> <esc>:vsp <CR>:exec("tselect ".expand("<cword>"))<CR>
     " t<A-k> opens the tselect of the tag in a vsplit window
 
