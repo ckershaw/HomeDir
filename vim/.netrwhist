@@ -1,2 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =0
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/april/magic2/.git'
+let g:netrw_dirhist_2='/home/april/magic2/.git/hooks'
+let g:netrw_dirhist_3='/home/april/magic2/src/jsvx/example'
+let g:netrw_dirhist_4='/home/april/magic2/src/jsvx/test'
+let g:netrw_dirhist_5='/home/april/old/src/lcmtypes'

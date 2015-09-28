@@ -7,7 +7,6 @@ Goeddel
 refactors
 PID
 expressivity
-softmax
 Lidar
 Hokuyo
 MPDM
@@ -16,3 +15,10 @@ lidar
 png
 softmaxing
 holonomic
+softmax
+NGV
+ckershaw
+umich
+EECS
+edu
+hessian
