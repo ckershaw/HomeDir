@@ -1,7 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =5
-let g:netrw_dirhist_1='/home/april/magic2/.git'
-let g:netrw_dirhist_2='/home/april/magic2/.git/hooks'
-let g:netrw_dirhist_3='/home/april/magic2/src/jsvx/example'
-let g:netrw_dirhist_4='/home/april/magic2/src/jsvx/test'
-let g:netrw_dirhist_5='/home/april/old/src/lcmtypes'
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/april/project-template/src/lcmtypes'
+let g:netrw_dirhist_2='/home/april/smartcarts/src'
+let g:netrw_dirhist_3='/home/april/smartcarts'
+let g:netrw_dirhist_4='/home/april/smartcarts/src'
+let g:netrw_dirhist_5='/home/april/smartcarts/src/localize'
+let g:netrw_dirhist_6='/home/april/smartcarts/april2/lcmtypes'

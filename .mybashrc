@@ -35,12 +35,7 @@ shopt -s histappend
 
 # Important Paths
 export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64/
-export MAGIC2=$HOME/magic2
 
-export ROBOT_CONFIG=$HOME/magic2/config/robot.config
-export VX_SHADER_PATH=$HOME/magic2/src/vx/shaders/
-export VX_FONT_PATH=$HOME/magic2/src/vx/fonts/
-export WEBVX_HTML_PATH=$HOME/magic2/src/vx/webvx_html
 export GIT_EDITOR=vim
 
 
@@ -48,17 +43,8 @@ export GIT_EDITOR=vim
 # all jars
 export CLASSPATH=
 export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcm.jar
-#export CLASSPATH=$CLASSPATH:$HOME/perls/trunk/build/share/java/perls_lcmtypes.jar
-#export CLASSPATH=$CLASSPATH:$HOME/ngv/java/ngv.jar
 export CLASSPATH=$CLASSPATH:$HOME/april/java/april.jar
-#export CLASSPATH=$CLASSPATH:$HOME/dngv/java/dngv.jar
 export CLASSPATH=$CLASSPATH:$HOME/magic2/java/magic2.jar
-
-#export CLASSPATH=$CLASSPATH:/usr/share/java/gluegen-rt.jar
-#export CLASSPATH=$CLASSPATH:/usr/share/java/jogl.jar
-#export CLASSPATH=$CLASSPATH:$HOME/worldwind/worldwind.jar
-#export CLASSPATH=$CLASSPATH:$HOME/worldwind/worldwindx.jar
-
 export CLASSPATH=$CLASSPATH:.
 
 # Java load library
