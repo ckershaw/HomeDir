@@ -7,7 +7,6 @@ Goeddel
 refactors
 PID
 expressivity
-softmax
 Lidar
 Hokuyo
 MPDM
@@ -19,3 +18,14 @@ holonomic
 novelly
 quadrotors
 convolutional
+softmax
+NGV
+ckershaw
+umich
+EECS
+edu
+hessian
+GoogLeNet
+convolutional
+grayscale
+subgradient
