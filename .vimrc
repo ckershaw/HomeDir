@@ -26,6 +26,9 @@ set expandtab
 set shiftwidth=4
 set softtabstop=4
 "set textwidth=80
+"
+vnoremap > >gv
+vnoremap < <gv
 
 set mouse=a
 

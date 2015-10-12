@@ -58,3 +58,18 @@ cpzstat() {
 }
 
 alias matlab='/data/MATLAB/2014b/bin/matlab'
+
+
+function _email_job {
+    echo $@ | tee /var/tmp/$$.email_job.txt
+    $@ 2>&1 | tee -a /var/tmp/$$.email_job.txt
+
+    if [ $? -eq 0 ]; then
+        str="[koopa] Success: $@"
+        mpack -s "$str" /var/tmp/$$.email_job.txt rwolcott88@gmail.com
+    else
+        str="[koopa] FAILED: $@"
+        mpack -s "$str" /var/tmp/$$.email_job.txt rwolcott88@gmail.com
+    fi
+}
+alias email-job='_email_job'
