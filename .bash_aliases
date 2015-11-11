@@ -49,15 +49,36 @@ _make() {
 }
 complete -F _make make
 
+# ALIASES
+alias ll='ls -l'
+alias lla='ls -al'
+alias md=mkdir
+alias rd=rmdir
+alias clr=clear
+alias svnst='svn st | grep -v "^?"'
+alias java='java -server -ea'
+alias java-prof='java -client -agentlib:hprof=cpu=samples,depth=8,interval=1,thread=y'
+alias java-prof-view='java -jar $HOME/Utilities/java/PerfAnal.jar java.hprof.txt'
+alias grepPS='clear; grep ''publish\('' * -R; echo ; grep ''subscribe\('' * -R'
+alias gitk='gitk --all &'
+alias 'cd..'='cd ..'
+alias gitst='git status'
+alias gd='git diff --color'
+alias grep="grep -n --color=auto -I"
+
+alias mc="make clean"
+alias mcm="make clean; make"
+alias aca="ant clean build"
+alias makhe="makeh"
+alias mhja="makeh -j; alert"
 alias rcp='rsync -av --progress'
+
 cpstat() {
     tar cf - "$1" | pv -s $(du -sb "$1" | awk '{print $1}') | (cd "$2"; tar xf -)
 }
 cpzstat() {
     tar czf - "$1" | pv -s $(du -sb "$1" | awk '{print $1}') | (cd "$2"; tar xzf -)
 }
-
-alias matlab='/data/MATLAB/2014b/bin/matlab'
 
 
 function _email_job {

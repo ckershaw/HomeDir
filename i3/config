@@ -134,50 +134,41 @@ bindsym $mod+p move workspace to output down
 bindsym $mod+Shift+o move container to output up; focus output up
 bindsym $mod+Shift+p move container to output down; focus output down
 
-# workspace names/labels
-#bindsym $mod+c workspace chrome
-#bindsym $mod+p workspace spotify
-#bindsym Control+Shift+$wg workspace $wg
-#bindsym Control+Shift+$wh workspace $wh
-#bindsym Control+Shift+$wj workspace $wj
-#bindsym Control+Shift+$wk workspace $wk
-#bindsym Control+Shift+$wl workspace $wl
-#bindsym Control+Shift+Mod1+h move container to workspace h; workspace h
-#bindsym Control+Shift+Mod1+j move container to workspace j; workspace j
-#bindsym Control+Shift+Mod1+k move container to workspace k; workspace k
+#Move relative
+set $control ~/.i3/workspace_controller.py
+bindsym $mod+Control+Left  exec $control prev go
+bindsym $mod+Control+Right exec $control next go
+bindsym $mod+Control+Up    exec $control up go
+bindsym $mod+Control+Down  exec $control down go
+
+bindsym $mod+Control+Shift+Left  exec $control prev move
+bindsym $mod+Control+Shift+Right exec $control next move
+bindsym $mod+Control+Shift+Up    exec $control up move
+bindsym $mod+Control+Shift+Down  exec $control down move
 
 # switch to workspace
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
-bindsym $mod+6 workspace number 6
-bindsym $mod+7 workspace number 7
-bindsym $mod+8 workspace number 8
-bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
-
-bindsym $mod+Control+Left workspace prev
-bindsym $mod+Control+Right workspace next
-
-bindsym $mod+Shift+Control+Left move container to workspace prev; workspace prev
-bindsym $mod+Shift+Control+Right move container to workspace next; workspace next
+bindsym $mod+1 exec $control go 1
+bindsym $mod+2 exec $control go 2
+bindsym $mod+3 exec $control go 3
+bindsym $mod+4 exec $control go 4
+bindsym $mod+5 exec $control go 5
+bindsym $mod+6 exec $control go 6
+bindsym $mod+7 exec $control go 7
+bindsym $mod+8 exec $control go 8
+bindsym $mod+9 exec $control go 9
+bindsym $mod+0 exec $control go 0
 
 # move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number 1; workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2; workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3; workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4; workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5; workspace number 5
-bindsym $mod+Shift+6 move container to workspace number 6; workspace number 6
-bindsym $mod+Shift+7 move container to workspace number 7; workspace number 7
-bindsym $mod+Shift+8 move container to workspace number 8; workspace number 8
-bindsym $mod+Shift+9 move container to workspace number 9; workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 10; workspace number 10
-
-# }
-
+bindsym $mod+Shift+1 exec $control move 1
+bindsym $mod+Shift+2 exec $control move 2
+bindsym $mod+Shift+3 exec $control move 3
+bindsym $mod+Shift+4 exec $control move 4
+bindsym $mod+Shift+5 exec $control move 5
+bindsym $mod+Shift+6 exec $control move 6
+bindsym $mod+Shift+7 exec $control move 7
+bindsym $mod+Shift+8 exec $control move 8
+bindsym $mod+Shift+9 exec $control move 9
+bindsym $mod+Shift+0 exec $control move 0
 
 
 # reload the configuration file
@@ -255,6 +246,7 @@ focus_follows_mouse no
 
 # startup programs
 exec --no-startup-id synapse -s
+exec --no-startup-id bumblebee-indicator
 exec --no-startup-id xrandr --output DP-1 --auto --above LVDS-1
 exec --no-startup-id nm-applet
 exec --no-startup-id gnome-sound-applet
@@ -298,3 +290,5 @@ mode "$mode_system" {
     bindsym $mod+Escape mode "$default"
 }
 bindsym $mod+Escape mode "$mode_system"
+
+

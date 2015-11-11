@@ -64,36 +64,6 @@ export PATH=$PATH:$APRILHOME/bin
 export PATH=$PATH:$HOME/Utilities/bin
 export PATH=$PATH:/opt/arm/bin
 
-# ALIASES
-alias ll='ls -l'
-alias lla='ls -al'
-alias md=mkdir
-alias rd=rmdir
-alias clr=clear
-alias svnst='svn st | grep -v "^?"'
-alias java='java -server -ea'
-alias java-prof='java -client -agentlib:hprof=cpu=samples,depth=8,interval=1,thread=y'
-alias java-prof-view='java -jar $HOME/Utilities/java/PerfAnal.jar java.hprof.txt'
-alias grepPS='clear; grep ''publish\('' * -R; echo ; grep ''subscribe\('' * -R'
-alias gitk='gitk --all &'
-alias 'cd..'='cd ..'
-alias gitup='git remote update'
-alias gitst='git status'
-alias gd='git diff --color'
-alias grep="grep -n --color=auto -I"
-
-alias mc="make clean"
-alias mcm="make clean all"
-alias aca="ant clean build"
-
-function svndiff () {
-  svn diff ${1+"$@"} | colordiff | less -R
-}
-
-alias viewer='BASE_STATION_ID=103 java $JOPTS april.viewer.Viewer --config $HOME/magic/config/robot.config'
-
-export FIGNORE=CVS:\~:.o:.svn
-
 date
 
 # Colors
@@ -138,7 +108,6 @@ function makeh {
 
     return ${PIPESTATUS[0]}
 }
-alias makhe="makeh"
 
 function javahighlight {
     # colors moved to top of bashrc
@@ -167,4 +136,3 @@ function anth {
     return ${PIPESTATUS[0]}
 }
 
-alias mhja="makeh -j; alert"
