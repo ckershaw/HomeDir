@@ -212,10 +212,6 @@ noremap <silent> cn <esc>:cn<CR>
     " cn goes to the next compiler error (must compile with :make in vim)
 noremap <silent> cp <esc>:cp<CR>
     " cp goes to the previous compiler error (must compile with :make in vim)
-noremap <silent> cw <esc>:cw<CR>
-    " cw opens the compiler output window (must compile with :make in vim)
-noremap <silent> cc <esc>:ccl<CR>
-    " cc closes the compiler output window (must compile with :make in vim)
 
 "---------don't fill buffer with single char delete-------------------------
 noremap <silent> x "_x

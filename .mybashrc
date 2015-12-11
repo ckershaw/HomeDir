@@ -51,6 +51,7 @@ export CLASSPATH=
 export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcm.jar
 export CLASSPATH=$CLASSPATH:$HOME/april/java/april.jar
 export CLASSPATH=$CLASSPATH:$HOME/magic2/java/magic2.jar
+export CLASSPATH=$CLASSPATH:$HOME/dngv/java/dngv.jar
 export CLASSPATH=$CLASSPATH:.
 
 # Java load library

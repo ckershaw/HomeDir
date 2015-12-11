@@ -223,8 +223,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # volume
-bindsym XF86AudioRaiseVolume exec amixer -q set Master 10%+ unmute
-bindsym XF86AudioLowerVolume exec amixer -q set Master 10%- unmute
+bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
+bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
 bindsym XF86AudioMute exec amixer -q -D pulse set Master toggle
 
 # spotify
@@ -265,12 +265,38 @@ exec --no-startup-id synclient VertScrollDelta=-111
 exec --no-startup-id xsetroot -solid "#333333"
 
 
+# Color chooser
+# arch blue     #1793D1
+# debian red    #D70A53
+# manjaro green #2ECC71
+# plasma green  #18B092
+# matrix green  #00FF00
+# mint green    #5FAA24
+# numix         #C84433
+# ubuntu orange #F37320
+# vertex dark   #2C6FF0
+set $color1 #1793D1
+set $color2 #FFFFFF
+# Theme colors    border  backgr. text
+client.focused   $color1 $color1 #000000 #FFFFFF
+client.unfocused #222222 #222222 $color1  #222222
+client.urgent    #274D01 #900000 #FFFFFF #900000
+
 bar {
     status_command  i3blocks -c ~/.i3/i3blocks.conf
     position        top
     #tray_output     DP-0
     tray_output     primary
     workspace_buttons yes
+    colors {
+        separator  #909090
+        background #000000
+        statusline $color2 #border  backgr.  text
+        focused_workspace  $color1 $000000 $color1
+        active_workspace   #000000 #A4A28D #FFFFFF
+        inactive_workspace #909090 #000000 #909090
+        urgent_workspace   #900000 #000000 #900000
+    }
 }
 
 
