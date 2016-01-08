@@ -43,12 +43,13 @@ bindsym $mod+space exec --no-startup-id rofi -now -bg "#222222" -fg "#888888" -h
 #bindsym Control+Shift+space exec --no-startup-id rofi -rnow -bg "#222222" -fg "#888888" -hlbg "#285577" -hlfg "#ffffff"
 #bindsym Control+Shift+Mod1+space exec --no-startup-id rofi -snow -bg "#222222" -fg "#888888" -hlbg "#285577" -hlfg "#ffffff"
 
-hide_edge_borders both
+#hide_edge_borders both
 #bindsym $mod+backslash exec i3-input -f 'pango: Ubuntu Mono 10' -F 'rename workspace to "%s"' -P 'New name: '
 #bindsym $mod+backslash exec ~/.i3/scripts/rename.py
 bindsym $mod+backslash exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
 new_window 1pixel
+default_orientation horizontal
 
 
 #############################################################
