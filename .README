@@ -1,0 +1,9 @@
+# scripts
+
+
+git clone --separate-git-dir=$HOME/.myconf /path/to/repo $HOME/myconf-del
+cp ~/myconf-del/.gitmodules ~  # If you use Git submodules
+rm -r ~/myconf-del/
+
+alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
+config config status.showUntrackedFiles no
