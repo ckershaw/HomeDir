@@ -221,7 +221,7 @@ let b:comment_leader = '//'
 au FileType c,cpp,java,javascript let b:comment_leader = '//'
 au FileType haskell,vhdl,ada let b:comment_leader = '--'
 au FileType vim let b:comment_leader = '"'
-au FileType sh,make,r,python let b:comment_leader = '#'
+au FileType sh,make,r,python,cmake let b:comment_leader = '#'
 au FileType matlab,tex let b:comment_leader = '%'
     "set up comment characters for given filetypes
 

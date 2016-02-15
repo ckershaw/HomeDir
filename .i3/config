@@ -38,17 +38,12 @@ bindsym $mod+d exec dmenu_run
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# rofi startup/dmenu replacement
-bindsym $mod+space exec --no-startup-id rofi -now -bg "#222222" -fg "#888888" -hlbg "#285577" -hlfg "#ffffff"
-#bindsym Control+Shift+space exec --no-startup-id rofi -rnow -bg "#222222" -fg "#888888" -hlbg "#285577" -hlfg "#ffffff"
-#bindsym Control+Shift+Mod1+space exec --no-startup-id rofi -snow -bg "#222222" -fg "#888888" -hlbg "#285577" -hlfg "#ffffff"
-
 hide_edge_borders both
 #bindsym $mod+backslash exec i3-input -f 'pango: Ubuntu Mono 10' -F 'rename workspace to "%s"' -P 'New name: '
 #bindsym $mod+backslash exec ~/.i3/scripts/rename.py
 bindsym $mod+backslash exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
-new_window 1pixel
+new_window pixel 1
 
 
 #############################################################
@@ -85,6 +80,8 @@ bindsym $mod+Shift+Right move right
 # split in horizontal orientation
 bindsym $mod+n split h
 
+bindsym $mod+Shift+t split toggle
+
 # split in vertical orientation/go downward
 bindsym $mod+m split v
 
@@ -112,7 +109,7 @@ bindsym $mod+c focus child
 bindsym $mod+Print exec ~/.i3/scripts/floatshot.sh;
 
 #toggle border
-bindsym $mod+b border toggle
+bindsym $mod+b border pixel 3
 
 #refresh monitor state
 bindsym $mod+s exec xrandr --output DP-1 --auto --above LVDS-1
@@ -260,9 +257,9 @@ exec --no-startup-id nm-applet
 exec --no-startup-id gnome-sound-applet
 exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id indicator-cpufreq
-exec --no-startup-id setxkbmap -option caps:none
 exec --no-startup-id synclient VertScrollDelta=-111
 exec --no-startup-id xsetroot -solid "#333333"
+exec --no-startup-id setxkbmap -option caps:none
 
 
 # Color chooser
@@ -278,7 +275,7 @@ exec --no-startup-id xsetroot -solid "#333333"
 set $color1 #1793D1
 set $color2 #FFFFFF
 # Theme colors    border  backgr. text
-client.focused   $color1 $color1 #000000 #FFFFFF
+client.focused   $color1 $color1 #000000 #FF0000
 client.unfocused #222222 #222222 $color1  #222222
 client.urgent    #274D01 #900000 #FFFFFF #900000
 

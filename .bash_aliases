@@ -1,3 +1,5 @@
+alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
+
 function cd-make-dir {
     local dir olddir
     dir=$(pwd)
@@ -94,3 +96,10 @@ function _email_job {
     fi
 }
 alias email-job='_email_job'
+
+export LCMTYPES=""
+export LCMTYPES="$LCMTYPES $HOME/magic2/lcmtypes/*"
+export LCMTYPES="$LCMTYPES $HOME/magic2/april2/lcmtypes/*"
+export LCMTYPES="$LCMTYPES $HOME/navboard/lcmtypes/*"
+alias spy="$HOME/magic2/bin/lcm-spy-web $LCMTYPES"
+alias spy_console="$HOME/magic2/bin/lcm-spy-april $LCMTYPES"
