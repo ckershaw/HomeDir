@@ -39,11 +39,13 @@ bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 hide_edge_borders both
+
 #bindsym $mod+backslash exec i3-input -f 'pango: Ubuntu Mono 10' -F 'rename workspace to "%s"' -P 'New name: '
 #bindsym $mod+backslash exec ~/.i3/scripts/rename.py
 bindsym $mod+backslash exec i3-input -F 'rename workspace to "%s"' -P 'New name: '
 
 new_window pixel 1
+default_orientation horizontal
 
 
 #############################################################
