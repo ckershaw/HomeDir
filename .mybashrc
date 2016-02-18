@@ -62,7 +62,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/april/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/dngv/lib
 
 # path
-export PATH=$PATH:/opt/arm/bin
+export PATH=$PATH:/opt/arm/bin:$HOME/scripts/
 
 date
 

@@ -108,7 +108,8 @@ bindsym $mod+a focus parent
 bindsym $mod+c focus child
 
 #aatempt screenshot
-bindsym $mod+Print exec ~/.i3/scripts/floatshot.sh;
+bindsym $mod+Shift+f exec ~/scripts/floatshot.sh
+bindsym $mod+Control+c exec google-chrome
 
 #toggle border
 bindsym $mod+b border pixel 3

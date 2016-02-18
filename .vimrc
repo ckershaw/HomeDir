@@ -19,14 +19,12 @@ noremap <F3> :w !detex \| wc <CR>
 "---------standard options--------------------------------------------------
 
 set hlsearch
-set noincsearch
 set smartcase
 
 set expandtab
 set shiftwidth=4
 set softtabstop=4
-"set textwidth=80
-"
+
 vnoremap > >gv
 vnoremap < <gv
 
@@ -34,16 +32,14 @@ set mouse=a
 
 set listchars=eol:$,tab:>-,trail:~,extends:>,precedes:<
 
+" Show last status all the time
 set ls=2
-set statusline=%<%F\ %h%m%r%y%=%-14.(%l,%c%V%)\ %P
+set statusline=%<%F\ %h%m%r%y%=%-14.(%l/%L,%c%V%)\ %P
 :let g:buftabs_in_statusline=1
 
 nmap ,d :b#<bar>bd#<cr>
 
-
-au FileType make,text :setlocal noexpandtab
-
-set tabpagemax=25
+set tabpagemax=1
 set foldmethod=syntax
 set foldlevelstart=99
 
@@ -52,18 +48,16 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgree
 match ExtraWhitespace /\s\+$/ " Match trailing whitespac
 
 " sudo to write
-cnoremap w!! w !sudo tee % >/dev/nullndif
+cnoremap w!! w !sudo tee % >/dev/null
 
-au BufRead,BufNewFile *.lcm set filetype=c
-au BufRead,BufNewFile *.cfg set filetype=c
-au BufRead,BufNewFile *.config set filetype=c
-au BufRead,BufNewFile *.dox set filetype=c
-"au FileType c,cpp,java,matlab,sh,make :setlocal cindent
-"au FileType text :setlocal smartindent
+au BufRead,BufNewFile *.lcm     setfiletype c
+au BufRead,BufNewFile *.cfg     setfiletype c
+au BufRead,BufNewFile *.config  setfiletype c
+au BufRead,BufNewFile *.conf    setfiletype c
+au BufRead,BufNewFile *.dox     setfiletype c
 au FileType text :set foldmethod=indent
 set autoindent
 filetype plugin indent on
-
 
 set cinoptions=l1,(0,u0,j1
 "remove trailing whitespace from all files
@@ -78,13 +72,6 @@ vnoremap <F1> zf
 "abbreviations
 iab #i #include
 iab #d #define
-iab teh the
-iab tihs this
-ca maek make
-ca amek make
-ca amke make
-ca amk mak
-ca mka mak
 
 set shellcmdflag=-ic
 
@@ -93,7 +80,7 @@ set wildmode=list:longest
 
 set wildmenu
 set wildignore=*.swp,*.bak,*.d
-set wildignore+=*/.svn/*,/*.hg/*,/*.git/* " Version control
+"set wildignore+=*/.svn/*,/*.hg/*,/*.git/* " Version control
 set wildignore+=*/.virtualenvs/*
 set wildignore+=*.aux,*.out,*.toc " LaTeX stuff
 set wildignore+=*.jpg,*.bmp,*.gif,*.png,*.jpeg "Pics
@@ -127,7 +114,6 @@ nmap ,s :source ~/.vimrc<return>
 
 nmap ,m :make -j<return>
 
-
 "time out on key codes but not mappings
 set notimeout
 set ttimeout
@@ -158,7 +144,7 @@ inoremap <silent> <C-d> <esc>ddko
 inoremap <silent> <C-f> <esc>kJi
 
 "---------resizing splits----------------------------------------------------
-noremap = <esc><C-w>>
+"noremap = <esc><C-w>>
     " = increase size of vertically split window
 noremap - <esc><C-w><
     " - decrease size of vertically split window
@@ -167,35 +153,15 @@ noremap + <esc><C-w>+
 noremap _ <esc><C-w>-
     " _ decrease size of horizontally split window
 
-"----------moving between tabs and splits------------------------------------
-noremap gu <esc>gT
-    " gu moves left one tab
-noremap gi <esc>gt
-    " gi moves right one tab
+"----------moving between splits------------------------------------
 noremap gh <esc><C-w><Left>
     " gh moves left one vertically split window
-noremap gH <esc><C-w><Left>
-    " gH moves left one vertically split window (in ex mode gh is overridden)
 noremap gl <esc><C-w><Right>
     " gl moves right one vertically split window
 noremap gj <esc><C-w><Down>
     " gj moves down one horizontally split window
 noremap gk <esc><C-w><Up>
     " gk moves up one horizontally split window
-
-"----------opening tabs and splits------------------------------------------
-noremap <silent> g<C-e> <esc>:Ex<CR>
-    " g<C-e> opens explorer mode
-noremap <silent> g<C-t> <esc>:Tex<CR>
-    " g<C-t> opens a new tab and enters explorer mode in it
-noremap <silent> g= <esc><C-w>v<C-w><Right>
-    " g= splits window vertically and enters the right one
-noremap <silent> g- <esc><C-w>v
-    " g- splits window vertically and enters the left one
-noremap <silent> g+ <esc><C-w>s
-    " g+ splits window horizontally and enters the top one
-noremap <silent> g_ <esc><C-w>s<C-w><Down>
-    " g_ splits window horizontally and enters the bottom one
 
 "---------home, end, pgup, pgdn-----------------------------------------------
 noremap <silent> <C-l> $
@@ -225,11 +191,37 @@ au FileType sh,make,r,python,cmake,conf let b:comment_leader = '#'
 au FileType matlab,tex let b:comment_leader = '%'
     "set up comment characters for given filetypes
 
-"noremap ,c :call Comment()<CR>
-"noremap ,u :call UnComment()<CR>
+noremap ,c mC :call Comment()<cr> 'C
+noremap ,u mC :call Uncomment()<cr> 'C
 
-noremap <silent> ,c :<C-B>sil <C-E>s/^\(\s*\)/\1<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:noh<CR>
-noremap <silent> ,u :<C-B>sil <C-E>s/^\(\s*\)\V<C-R>=escape(b:comment_leader,'\/')<CR>/\1/e<CR>:noh<CR>
+function! Comment() range
+    for lineno in range(a:firstline, a:lastline)
+        let line = getline(lineno)
+        if strlen(line) > 2
+            let nonws = matchend(line, '^\s*')
+            let sbegin = strpart(line, 0, nonws)
+            let send   = strpart(line, nonws)
+            let cleanLine = sbegin . b:comment_leader . send
+            call setline(lineno, cleanLine)
+        endif
+    endfor
+endfunction
+
+function! Uncomment() range
+    for lineno in range(a:firstline, a:lastline)
+        let line = getline(lineno)
+        let nonws = matchend(line, '^\s*')
+        let com = match(line, b:comment_leader, nonws)
+        if com == nonws
+            let cleanLine = substitute(line, b:comment_leader, "", 'e')
+            call setline(lineno, cleanLine)
+        endif
+    endfor
+endfunction
+
+
+"noremap <silent> ,c :<C-B>sil <C-E>s/^\(\s*\)/\1<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:noh<CR>
+"noremap <silent> ,u :<C-B>sil <C-E>s/^\(\s*\)\V<C-R>=escape(b:comment_leader,'\/')<CR>/\1/e<CR>:noh<CR>
 
 "-------tags----------------------------------------------------------------
 set tags=./tags;/
@@ -254,20 +246,23 @@ noremap <silent> t<A-k> <esc>:vsp <CR>:exec("tselect ".expand("<cword>"))<CR>
     " t<A-k> opens the tselect of the tag in a vsplit window
 
 "------DICT----------------
-set dictionary-=/usr/share/dict/words
-set dictionary+=/usr/share/dict/words
+"set dictionary-=/usr/share/dict/words
+"set dictionary+=/usr/share/dict/words
 
 set complete-=k
 set complete+=k
 
 set completeopt=longest,menuone
 
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
+"inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+"
 inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
   \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-
-inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+"
+inoremap <expr> <C-e> pumvisible() ? '<C-n>' :
   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+
+set tags=./.tags;
+set omnifunc=syntaxcomplete#Complete
 
 
