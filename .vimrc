@@ -236,18 +236,14 @@ noremap <silent> tJ <esc>:exec("tag ".expand("<cword>"))<CR>
     " tJ to open the tag
 noremap <silent> tj <esc>:exec("ptag ".expand("<cword>"))<CR>
     " tj preview the tag
-noremap <silent> t<C-j> <esc>:tab split<CR>:exec("tag ".expand("<cword>"))<CR>
-    " t<C-j> opens the destination of following the tag in a new tab
-noremap <silent> t<A-j> <esc>:vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-    " t<A-j> opens the destination of following the tag in a vsplit window
+noremap <silent> t<C-j> <esc>:vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+    " t<C-j> opens the destination of following the tag in a vsplit window
 noremap <silent> tK <esc>:exec("tselect ".expand("<cword>"))<CR>
     " tK executes tag select
 noremap <silent> tk <esc>:exec("ptselect ".expand("<cword>"))<CR>
     " tk previews the tag select
-noremap <silent> t<C-k> <esc>:tab split<CR>:exec("tselect ".expand("<cword>"))<CR>
-    " t<C-k> opens the tselect of the tag in a new tab
-noremap <silent> t<A-k> <esc>:vsp <CR>:exec("tselect ".expand("<cword>"))<CR>
-    " t<A-k> opens the tselect of the tag in a vsplit window
+noremap <silent> t<C-k> <esc>:vsp <CR>:exec("tselect ".expand("<cword>"))<CR>
+    " t<C-k> opens the tselect of the tag in a vsplit window
 
 "------DICT----------------
 "set dictionary-=/usr/share/dict/words
