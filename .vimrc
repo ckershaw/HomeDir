@@ -50,12 +50,16 @@ match ExtraWhitespace /\s\+$/ " Match trailing whitespac
 " sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
 
+au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
 au BufRead,BufNewFile *.lcm     setfiletype c
 au BufRead,BufNewFile *.cfg     setfiletype c
 au BufRead,BufNewFile *.config  setfiletype c
 au BufRead,BufNewFile *.conf    setfiletype c
 au BufRead,BufNewFile *.dox     setfiletype c
 au FileType text :set foldmethod=indent
+au FileType tex :set foldmethod=marker
+au FileType tex :let g:tex_indent_items = 1
+au FileType tex :set foldmarker=\begin,\end
 set autoindent
 filetype plugin indent on
 
