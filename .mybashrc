@@ -36,7 +36,7 @@ HISTCONTROL=ignoredups:erasedups
 # append to the history file, don't overwrite it
 shopt -s histappend
 
-PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
+#PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 
 ##Vi input mode
 # set -o vi
@@ -62,7 +62,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/april/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/dngv/lib
 
 # path
-export PATH=$PATH:/opt/arm/bin
+export PATH=$PATH:/opt/arm/bin:$HOME/scripts/
 
 date
 
