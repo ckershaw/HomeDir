@@ -28,8 +28,6 @@ function cd-make-dir {
 }
 
 function make () {
-
-    echo $@ > tmp
     local fopt=0
     for i in "$@" ; do
         if [[ $i == "-f" ]] ; then
