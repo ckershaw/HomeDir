@@ -113,7 +113,7 @@ noremap <C-PageDown> :bn!<CR>
 
 
 "quick edit/source vimrc
-nmap ,v :tabnew ~/.vimrc<return>
+nmap ,v :e ~/.vimrc<return>
 nmap ,s :source ~/.vimrc<return>
 
 nmap ,m :make -j<return>

@@ -1,3 +1,4 @@
+#!/bin/sh
 alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
 config config status.showUntrackedFiles no
 
@@ -27,26 +28,47 @@ function cd-make-dir {
 }
 
 function make () {
-    local dir olddir
+
+    echo $@ > tmp
+    local fopt=0
+    for i in "$@" ; do
+        if [[ $i == "-f" ]] ; then
+            fopt=1
+        fi
+    done
+
+    local dir olddir ex
     dir=$(pwd)
     olddir=$OLDPWD
-    cd-make-dir
 
-    echo "make $@ -C `pwd`"
+    if [ $fopt -eq "0" ]
+    then
+        cd-make-dir
+    fi
+
+    echo "make $* -C `pwd`"
     if [ -d CMakeFiles ]; then # don't colorize if cmake provided
         /usr/bin/make $@
+        ex=$?
     else
         /usr/bin/make $@
+        ex=$?
     fi
 
     cd $dir
     OLDPWD=$olddir
+    return $ex
 }
 
 _make() {
     local cur opts
     cur="${COMP_WORDS[COMP_CWORD]}"
-    opts=$(cd-make-dir; make -qp 2> /dev/null | sed -n -e 's/^\([^.#[:space:]][^:[:space:]]*\): .*/\1/p' | sed '/%/ d')
+    opts=$(make -qp 2> /dev/null | sed -n -e 's/^\([^.#[:space:]][^:[:space:]]*\): .*/\1/p' | sed '/%/ d')
+    if [ $3 == "-f" ]
+    then
+        opts=$(ls)
+    fi
+
 
     COMPREPLY=($(compgen -W "${opts}" -- ${cur}))
 }
