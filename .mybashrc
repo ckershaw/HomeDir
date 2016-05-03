@@ -15,17 +15,17 @@
 
 # SHELL PROMPT
 function parse_git_dirty {
-  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo "*"
+  [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo " *"
 }
 function parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1/"
 }
 function parse_git_push {
-  [[ $(git branch -vv 2> /dev/null | \grep "\* .*[.*: ahead [0-9]*\]") != "" ]]  && echo "+"
-  [[ $(git branch -vv 2> /dev/null | \grep "\* .* \[") == "" ]]  && echo "?"
+  [[ $(git branch -vv 2> /dev/null | \grep "\* .*\[.*: ahead [0-9]*\]") != "" ]]  && echo " +"
+  [[ $(git branch -vv 2> /dev/null | \grep "\* .* \[") == "" ]]  && echo " ?"
 }
 function git_prompt {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1 $(parse_git_dirty)$(parse_git_push)]/"
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)$(parse_git_push)]/"
 }
 
 export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[31m\] $(git_prompt)\[\033[01;34m\]
