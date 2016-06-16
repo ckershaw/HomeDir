@@ -94,10 +94,10 @@ set wildignore+=*.pdf,*.xls,*.xlsx,*.doc
 set wildignore+=*.jar
 
 
-inoremap <F5> <C-O>:make<Space>
-nnoremap <F5> :make<Space>
-onoremap <F5> <C-C>:make<Space>
-vnoremap <F5> :make<Space>
+inoremap <F5> <C-O>:make<Space>-j
+nnoremap <F5> :make<Space>-j
+onoremap <F5> <C-C>:make<Space>-j
+vnoremap <F5> :make<Space>-j
 
 "avoid escape!
 :imap jk <Esc>

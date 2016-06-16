@@ -112,5 +112,3 @@ fi
 
 export PYTHONPATH=/usr/local/lib/python2.7/dist-packages/
 
-
-source /opt/ros/indigo/setup.bash

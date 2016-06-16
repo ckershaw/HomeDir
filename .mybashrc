@@ -26,10 +26,17 @@ function parse_git_push {
 }
 function git_prompt {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/[\1$(parse_git_dirty)$(parse_git_push)]/"
+  }
+
+function lcm_prompt {
+    if [ -z ${LCM_DEFAULT_URL+x} ];
+    then echo "";
+    else echo "LCM_DEFAULT_URL=$LCM_DEFAULT_URL";
+    fi
 }
 
-export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[31m\] $(git_prompt)\[\033[01;34m\]
-$\[\033[00m\] '
+export PS1='\[\033[01;32m\]\u@\h\[\033[01;34m\] \w\[\033[31m\] $(git_prompt) \[\033[00m\]$(lcm_prompt)
+\[\033[01;34m\]$\[\033[00m\] '
 
 #Append history
 HISTCONTROL=ignoredups:erasedups
@@ -136,4 +143,6 @@ function anth {
 
     return ${PIPESTATUS[0]}
 }
+
+export ROBOT_CONFIG=/home/ckershaw/magic2/config/robot-concat.config
 
