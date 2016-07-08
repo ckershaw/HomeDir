@@ -1,4 +1,3 @@
-" to use this vimrc, copy it to ~/.vimrc
 " (make sure to back your's up if you want to save it first)
 " in case you haven't noticed, " is the comment character in vim config files
 set autochdir
@@ -104,6 +103,12 @@ vnoremap <F5> :make<Space>-j
 :imap Jk <Esc>
 :imap jK <Esc>
 :imap JK <Esc>
+"avoid escape!
+:imap kj <Esc>
+:imap kJ <Esc>
+:imap Kj <Esc>
+:imap KJ <Esc>
+
 
 "tab next/previous
 map H :bp!<CR>

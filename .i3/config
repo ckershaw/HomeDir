@@ -91,9 +91,9 @@ bindsym $mod+m split v
 bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
-#bindsym $mod+s layout stacking
-#bindsym $mod+t layout tabbed
-#bindsym $mod+e layout toggle split
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -115,7 +115,7 @@ bindsym $mod+Control+c exec google-chrome
 bindsym $mod+b border pixel 3
 
 #refresh monitor state
-bindsym $mod+s exec xrandr --output DP-1 --auto --above LVDS-1
+bindsym $mod+Shift+s exec xrandr --output DP-1 --auto --above DP-4
 
 # }
 
@@ -160,9 +160,13 @@ bindsym $mod+0 workspace number 10
 
 bindsym $mod+Control+Left workspace prev
 bindsym $mod+Control+Right workspace next
+bindsym $mod+Control+h workspace prev
+bindsym $mod+Control+l workspace next
 
 bindsym $mod+Shift+Control+Left move container to workspace prev; workspace prev
 bindsym $mod+Shift+Control+Right move container to workspace next; workspace next
+bindsym $mod+Shift+Control+h move container to workspace prev; workspace prev
+bindsym $mod+Shift+Control+l move container to workspace next; workspace next
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number 1; workspace number 1
@@ -227,6 +231,9 @@ bindsym XF86AudioRaiseVolume exec amixer -q set Master 5%+ unmute
 bindsym XF86AudioLowerVolume exec amixer -q set Master 5%- unmute
 bindsym XF86AudioMute exec amixer -q -D pulse set Master toggle
 
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+
 # spotify
 bindsym XF86AudioPlay exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause
 bindsym XF86AudioStop exec dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
@@ -244,7 +251,6 @@ bindsym XF86HomePage exec nemo
 
 
 # open these windows floating
-for_window [class="^Spotify$"] floating enable
 for_window [class="^Gcalctool$"] floating enable
 for_window [class="^Google-chrome$" title="^MightyText$"] floating enable
 for_window [class="^Google-chrome-stable$" title="^MightyText$"] floating enable
@@ -255,7 +261,7 @@ focus_follows_mouse no
 
 # startup programs
 exec --no-startup-id synapse -s
-exec --no-startup-id xrandr --output DP-1 --auto --above LVDS-1
+exec --no-startup-id xrandr --output DP-1 --auto --above DP-4
 exec --no-startup-id nm-applet
 exec --no-startup-id gnome-sound-applet
 exec --no-startup-id gnome-settings-daemon
