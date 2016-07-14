@@ -112,3 +112,5 @@ fi
 
 export PYTHONPATH=/usr/local/lib/python2.7/dist-packages/
 
+XDG_CURRENT_DESKTOP="Unity"
+

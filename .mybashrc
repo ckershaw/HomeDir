@@ -144,5 +144,4 @@ function anth {
     return ${PIPESTATUS[0]}
 }
 
-export ROBOT_CONFIG=/home/ckershaw/magic2/config/robot-concat.config
-
+export ROBOT_CONFIG=$HOME/magic2/config/robot-concat.config
