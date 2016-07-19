@@ -41,6 +41,12 @@ if ($status eq 'Discharging') {
 	$full_text .= ' DIS';
 } elsif ($status eq 'Charging') {
 	$full_text .= ' CHR';
+} elsif ($status eq 'Full') {
+} elsif ($status eq 'Unknown') {
+	$full_text .= ' UNK';
+} else {
+    $full_text .= ' ';
+    $full_text .= $status;
 }
 
 $short_text = $full_text;
@@ -50,8 +56,8 @@ if ($acpi =~ /(\d\d:\d\d):/) {
 }
 
 # print text
-print "$full_text\n";
-print "$short_text\n";
+print "⚡$full_text\n";
+print "⚡$short_text\n";
 
 # consider color and urgent flag only on discharge
 if ($status eq 'Discharging') {

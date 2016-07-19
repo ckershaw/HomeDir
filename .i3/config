@@ -127,13 +127,6 @@ bindsym $mod+Shift+s exec xrandr --output DP-1 --auto --above DP-4
 # workspace management
 # {
 
-# move workspace to output left/right
-bindsym $mod+o move workspace to output up
-bindsym $mod+p move workspace to output down
-
-bindsym $mod+Shift+o move container to output up; focus output up
-bindsym $mod+Shift+p move container to output down; focus output down
-
 # switch to workspace
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -158,13 +151,29 @@ bindsym $mod+Control+0 workspace number 20
 
 bindsym $mod+Control+Left workspace prev
 bindsym $mod+Control+Right workspace next
+bindsym $mod+Control+Up focus output up
+bindsym $mod+Control+Down focus output down
+
 bindsym $mod+Control+h workspace prev
 bindsym $mod+Control+l workspace next
+bindsym $mod+Control+k focus output up
+bindsym $mod+Control+j focus output down
+
+# move workspace to output up/down:
+bindsym $mod+o move workspace to output up
+bindsym $mod+p move workspace to output down
+
+# Move container to workspace
 
 bindsym $mod+Shift+Control+Left move container to workspace prev; workspace prev
 bindsym $mod+Shift+Control+Right move container to workspace next; workspace next
+bindsym $mod+Shift+Control+Up   move container to output up; focus output up
+bindsym $mod+Shift+Control+Down move container to output down; focus output down
+
 bindsym $mod+Shift+Control+h move container to workspace prev; workspace prev
 bindsym $mod+Shift+Control+l move container to workspace next; workspace next
+bindsym $mod+Shift+Control+k move container to output up; focus output up
+bindsym $mod+Shift+Control+j move container to output down; focus output down
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number 1; workspace number 1

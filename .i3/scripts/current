@@ -15,3 +15,4 @@
 #------------------------------------------------------------------------
 
 xdotool getwindowfocus getwindowname
+xdotool getwindowfocus getwindowname | sed 's/^\(.\{50\}\).*\(.\{20\}\)/\1\.\.\.\2/'
