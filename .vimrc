@@ -305,3 +305,5 @@ function! MyFoldText()
   let sub = strpart( sub, 0, winwidth(0) - strlen( info ) - num_w - fold_w - 1 )
   return sub . info
 endfunction
+
+set autochdir
