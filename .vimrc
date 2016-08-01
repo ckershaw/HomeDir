@@ -307,3 +307,6 @@ function! MyFoldText()
 endfunction
 
 set autochdir
+
+noremap <C-c> "+y
+noremap <C-v> "+p
