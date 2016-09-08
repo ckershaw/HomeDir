@@ -36,7 +36,7 @@ set ls=2
 set statusline=%<%F\ %h%m%r%y%=%-14.(%l/%L,%c%V%)\ %P
 :let g:buftabs_in_statusline=1
 
-nmap ,d :b#<bar>bd#<cr>
+nmap ,d :bp<bar>bd#<cr>
 
 set tabpagemax=1
 set foldmethod=syntax
