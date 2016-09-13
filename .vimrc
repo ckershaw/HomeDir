@@ -76,7 +76,7 @@ vnoremap <F1> zf
 iab #i #include
 iab #d #define
 
-set shellcmdflag=-ic
+set shellcmdflag=-c
 
 " Completion
 set wildmode=list:longest

@@ -245,6 +245,7 @@ for_window [class="^Google-chrome-stable$" title="^MightyText$"] floating enable
 focus_follows_mouse no
 
 # startup programs
+exec --no-startup-id compton -CGb
 exec --no-startup-id xrandr --output DP-1 --auto --above DP-4 --scale 1.5x1.5; exec  xrandr --output DP-4 --auto --pos 0x1620
 exec --no-startup-id nm-applet
 exec --no-startup-id gnome-sound-applet
