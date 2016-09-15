@@ -1,17 +1,3 @@
-#f () {
-#    errcode=$? # save the exit code as the first thing done in the trap function
-#    echo "error $errorcode" >> /tmp/bserr
-#    echo "the command executing at the time of the error was" >> /tmp/bserr
-#    echo "$BASH_COMMAND" >> /tmp/bserr
-#    echo "on line ${BASH_LINENO[0]}" >> /tmp/bserr
-#    # do some error handling, cleanup, logging, notification
-#    # $BASH_COMMAND contains the command that was being executed at the time of the trap
-#    # ${BASH_LINENO[0]} contains the line number in the script of that command
-#    # exit the script or return to try again, etc.
-#    # exit $errcode  # or use some other value or do return instead
-#}
-#
-#trap f ERR
 
 # SHELL PROMPT
 function parse_git_dirty {
@@ -53,8 +39,6 @@ shopt -s histappend
 export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64/
 
 export GIT_EDITOR=vim
-
-
 
 # all jars
 export CLASSPATH=
@@ -143,5 +127,3 @@ function anth {
 
     return ${PIPESTATUS[0]}
 }
-
-export ROBOT_CONFIG=$HOME/magic2/config/robot-concat.config

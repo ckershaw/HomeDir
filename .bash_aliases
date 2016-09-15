@@ -2,6 +2,8 @@
 alias config='/usr/bin/git --git-dir=$HOME/.myconf/ --work-tree=$HOME'
 config config status.showUntrackedFiles no
 
+shopt -s expand_aliases
+
 function cd-make-dir {
     local dir olddir
     dir=$(pwd)

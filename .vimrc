@@ -76,7 +76,8 @@ vnoremap <F1> zf
 iab #i #include
 iab #d #define
 
-set shellcmdflag=-ic
+set shellcmdflag=-c
+let $BASH_ENV = "~/.bash_aliases"
 
 " Completion
 set wildmode=list:longest
