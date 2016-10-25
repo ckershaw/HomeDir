@@ -6,7 +6,7 @@ filetype plugin on
 
 "---------Latex_______--------------------------------------------------
 
-command Ltx w|!pdflatex % && gnome-open %:r.pdf
+command Ltx w|!pdflatex % && gnome-open %:r.pdf & disown
 
 inoremap <F4> <C-O>:Ltx
 nnoremap <F4> :Ltx
@@ -309,5 +309,9 @@ endfunction
 
 set autochdir
 
-noremap <C-c> "+y
-noremap <C-v> "+p
+noremap ty "+y            " Select desired contents then press ty
+noremap tY "+Y            " Just press tY to yank entire line to clipboard
+noremap td "+d            " Select desired contents then press td
+noremap tD "+D            " Just press tY to delete entire line to clipboard
+noremap tp "+p            " Put the text from clipboard after the cursor
+noremap tP "+P            " Put the text from clipboard before the cursor
