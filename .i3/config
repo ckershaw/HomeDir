@@ -86,7 +86,7 @@ bindsym $mod+Control+c exec google-chrome
 bindsym $mod+b border pixel 3
 
 #refresh monitor state
-bindsym $mod+Shift+s exec xrandr --output DP-3 --auto --above DP-4 --scale 1.5x1.5; exec xrandr --output DP-4 --pos 0x2160
+bindsym $mod+Shift+s exec xrandr --output DP-3 --auto --above DP-4 --scale 1.5x1.5; exec xrandr --output DP-4 --pos 660x2160
 
 # The middle button and a modifer over any part of the window kills the window
 bindsym --whole-window $mod+button10 kill
@@ -246,7 +246,7 @@ focus_follows_mouse no
 
 # startup programs
 exec --no-startup-id compton -CGb
-exec --no-startup-id xrandr --output DP-3 --auto --above DP-4 --scale 1.5x1.5; exec  xrandr --output DP-4 --auto --pos 0x2160
+exec --no-startup-id xrandr --output DP-3 --auto --above DP-4 --scale 1.5x1.5; exec  xrandr --output DP-4 --auto --pos 660x2160
 
 exec --no-startup-id nm-applet
 exec --no-startup-id gnome-sound-applet
