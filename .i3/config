@@ -11,7 +11,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
 
-hide_edge_borders both
+hide_edge_borders active
 
 bindsym $mod+backslash exec i3-input -f 'pango: Ubuntu Mono 12' -F 'rename workspace to "%s"' -P 'New name: '
 
@@ -86,7 +86,7 @@ bindsym $mod+Control+c exec google-chrome
 bindsym $mod+b border pixel 3
 
 #refresh monitor state
-bindsym $mod+Shift+s exec xrandr --output DP-3 --auto --above DP-4 --scale 1.5x1.5; exec xrandr --output DP-4 --pos 660x2160
+bindsym $mod+Shift+s exec xrandr --output DP-3 --auto --above DP-4 --scale 2x2; exec xrandr --output DP-4 --pos 1520x2880
 
 # The middle button and a modifer over any part of the window kills the window
 bindsym --whole-window $mod+button10 kill
@@ -246,7 +246,7 @@ focus_follows_mouse no
 
 # startup programs
 exec --no-startup-id compton -CGb
-exec --no-startup-id xrandr --output DP-3 --auto --above DP-4 --scale 1.5x1.5; exec  xrandr --output DP-4 --auto --pos 660x2160
+exec --no-startup-id xrandr --output DP-3 --auto --above DP-4 --scale 2x2; exec  xrandr --output DP-4 --auto --pos 1520x2880
 
 exec --no-startup-id nm-applet
 exec --no-startup-id gnome-sound-applet
@@ -270,16 +270,17 @@ exec --no-startup-id xautolock -time 10 -locker '~/.i3/scripts/blurlock.sh' &
 
 set $bg-clr            #202020
 set $text-clr          #1793D1
-set $edge-clr          #0783C1
+set $edge-clr          #1793D1
+set $unfc-edge-clr     #A7A7A7
 set $inctv-text-clr    #A7A7A7
 set $inctv-bg-clr      #202020
 set $urgent-bg-clr     #990000
 
 # Window Colours
 #                       border         background     text            indicator
-client.focused          $edge-clr      $bg-clr        $text-clr       #00ff00
-client.unfocused        $inctv-bg-clr  $inctv-bg-clr  $inctv-text-clr #00ff00
-client.focused_inactive $inctv-bg-clr  $inctv-bg-clr  $inctv-text-clr #00ff00
+client.focused          $bg-clr        $edge-clr      $bg-clr         #A7A7A7
+client.unfocused        $inctv-bg-clr  $inctv-bg-clr  $inctv-text-clr $inctv-bg-clr
+client.focused_inactive $inctv-bg-clr  $inctv-bg-clr  $inctv-text-clr $inctv-bg-clr
 client.urgent           $urgent-bg-clr $urgent-bg-clr $text-clr       #00ff00
 
 bar {
@@ -293,7 +294,7 @@ bar {
         separator #757575
         #                  border         background     text
         focused_workspace  $text-clr      $bg-clr        $text-clr
-        active_workspace   $inctv-bg-clr  $inctv-bg-clr  $inctv-text-clr
+        active_workspace   $unfc-edge-clr $inctv-bg-clr  $inctv-text-clr
         inactive_workspace $inctv-bg-clr  $inctv-bg-clr  $inctv-text-clr
         urgent_workspace   $urgent-bg-clr $urgent-bg-clr #FFFFFF
     }
