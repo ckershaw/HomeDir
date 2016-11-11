@@ -3,9 +3,6 @@
 function parse_git_dirty {
   [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]] && echo " *"
 }
-function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/\1/"
-}
 function parse_git_push {
   [[ $(git branch -vv 2> /dev/null | \grep "\* .*\[.*: ahead [0-9]*\]") != "" ]]  && echo " +"
   [[ $(git branch -vv 2> /dev/null | \grep "\* .* \[") == "" ]]  && echo " ?"
@@ -32,9 +29,6 @@ shopt -s histappend
 
 #PROMPT_COMMAND="history -n; history -w; history -c; history -r; $PROMPT_COMMAND"
 
-##Vi input mode
-# set -o vi
-
 # Important Paths
 export JAVA_HOME=/usr/lib/jvm/java-1.7.0-openjdk-amd64/
 
@@ -44,14 +38,12 @@ export GIT_EDITOR=vim
 export CLASSPATH=
 export CLASSPATH=$CLASSPATH:/usr/local/share/java/lcm.jar
 export CLASSPATH=$CLASSPATH:$HOME/april/java/april.jar
-export CLASSPATH=$CLASSPATH:$HOME/dngv/java/dngv.jar
 export CLASSPATH=$CLASSPATH:.
 
 # Java load library
 export LD_LIBRARY_PATH=/usr/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/april/lib
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/dngv/lib
 
 # path
 export PATH=$PATH:/opt/arm/bin
