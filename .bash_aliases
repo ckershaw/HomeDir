@@ -97,6 +97,8 @@ alias aca="ant clean build"
 alias makhe="makeh"
 alias mhja="makeh -j; alert"
 alias rcp='rsync -av --progress'
+alias ':wqa'='exit'
+alias 'wqa'='exit'
 
 cpstat() {
     tar cf - "$1" | pv -s $(du -sb "$1" | awk '{print $1}') | (cd "$2"; tar xf -)
