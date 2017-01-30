@@ -1,6 +1,6 @@
 set $mod Mod1
 #font pango: Ubuntu Mono 6
-font pango: Ubuntu Mono 20
+font pango: Ubuntu Mono 12
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -87,15 +87,6 @@ bindsym $mod+b border pixel 3
 
 #refresh monitor state
 bindsym $mod+Shift+s exec xrandr --output DP-3 --auto --above DP-4 --scale 2x2; exec xrandr --output DP-4 --pos 1520x2880
-
-# The middle button and a modifer over any part of the window kills the window
-bindsym --whole-window $mod+button10 kill
-
-bindsym --whole-window $mod+Control+button9 workspace prev
-bindsym --whole-window $mod+Control+button8 workspace next
-
-bindsym --whole-window $mod+Shift+Control+button9 move container to workspace prev; workspace prev
-bindsym --whole-window $mod+Shift+Control+button8 move container to workspace next; workspace next
 
 # }
 
