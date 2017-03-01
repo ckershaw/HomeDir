@@ -1,4 +1,3 @@
-set autochdir
 set nospell
 filetype plugin on
 
@@ -19,8 +18,10 @@ set hlsearch
 set smartcase
 
 set expandtab
-set shiftwidth=4
-set softtabstop=4
+set shiftwidth=2
+set softtabstop=2
+set textwidth=80
+set nojs
 
 vnoremap > >gv
 vnoremap < <gv
@@ -35,6 +36,7 @@ set statusline=%<%F\ %h%m%r%y%=%-14.(%l/%L,%c%V%)\ %P
 :let g:buftabs_in_statusline=1
 
 nmap ,d :bp<bar>bd#<cr>
+nmap ,e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 set tabpagemax=1
 set foldmethod=syntax
@@ -47,28 +49,8 @@ match ExtraWhitespace /\s\+$/ " Match trailing whitespac
 " sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
 
-au BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
-au BufRead,BufNewFile *.lcm     setfiletype c
-au BufRead,BufNewFile *.cfg     setfiletype c
-au BufRead,BufNewFile *.config  setfiletype c
-au BufRead,BufNewFile *.conf    setfiletype c
-au BufRead,BufNewFile *.dox     setfiletype c
-au FileType text :set foldmethod=indent
-au FileType tex :set foldmethod=marker
-au FileType tex :let g:tex_indent_items = 1
-au FileType tex :set foldmarker=\begin,\end
-set autoindent
-filetype plugin indent on
-
-set cinoptions=l1,(0,u0,j1
 "remove trailing whitespace from all files
 autocmd BufWritePre * : :%s/\s\+$//e
-
-"Fold
-inoremap <F1> <C-O>za
-nnoremap <F1> za
-onoremap <F1> <C-C>za
-vnoremap <F1> zf
 
 "abbreviations
 iab #i #include
@@ -130,19 +112,11 @@ set ttimeoutlen=10
 "delete gets lot"
 set bs=2
 
-"backups
-set backup
-set backupdir=~/.vim/backup
-set backupext=~
-
-
 noremap K <nop>
     " disable the shift K command because I hit it and it does annoying things
     "
 set t_Co=256
 set bg=dark
-
-colorscheme wombat256mod
 
 syntax on
 noremap <silent> <C-n> :let @/="azsfaesrgesdsdrswer"<CR>
@@ -253,6 +227,7 @@ noremap <silent> t<C-k> <esc>:vsp <CR>:exec("tselect ".expand("<cword>"))<CR>
 "set dictionary-=/usr/share/dict/words
 "set dictionary+=/usr/share/dict/words
 
+set complete-=i
 set complete-=k
 set complete+=k
 
@@ -266,8 +241,7 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 inoremap <expr> <C-e> pumvisible() ? '<C-n>' :
   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
-set tags=./.tags;
-set omnifunc=syntaxcomplete#Complete
+"set omnifunc=syntaxcomplete#Complete
 
 " Set a nicer foldtext function
 set foldtext=MyFoldText()
@@ -313,3 +287,10 @@ noremap td "+d            " Select desired contents then press td
 noremap tD "+D            " Just press tY to delete entire line to clipboard
 noremap tp "+p            " Put the text from clipboard after the cursor
 noremap tP "+P            " Put the text from clipboard before the cursor
+
+set colorcolumn=+1
+colorscheme wombat256mod
+highlight ColorColumn NONE
+highlight link ColorColumn ErrorMsg
+
+

@@ -1,4 +1,4 @@
-set $mod Mod1
+set $mod Mod4
 #font pango: Ubuntu Mono 6
 font pango: Ubuntu Mono 12
 
@@ -126,9 +126,12 @@ bindsym $mod+Control+l workspace next
 bindsym $mod+Control+k focus output up
 bindsym $mod+Control+j focus output down
 
+bindsym $mod+o focus output left
+bindsym $mod+p focus output right
+
 # move workspace to output up/down:
-bindsym $mod+o move workspace to output up
-bindsym $mod+p move workspace to output down
+bindsym $mod+Shift+o move workspace to output left
+bindsym $mod+Shift+p move workspace to output right
 
 # Move container to workspace
 
@@ -237,6 +240,7 @@ focus_follows_mouse no
 
 # startup programs
 exec --no-startup-id compton -CGb
+exec --no-startup-id /usr/share/goobuntu-indicator/goobuntu_indicator.py
 exec --no-startup-id xrandr --output DP-3 --auto --above DP-4 --scale 2x2; exec  xrandr --output DP-4 --auto --pos 1520x2880
 
 exec --no-startup-id nm-applet
@@ -246,7 +250,8 @@ exec --no-startup-id indicator-cpufreq
 exec --no-startup-id synclient VertScrollDelta=-111
 exec --no-startup-id xsetroot -solid "#333333"
 exec --no-startup-id setxkbmap -option caps:none
-exec --no-startup-id xautolock -time 10 -locker '~/.i3/scripts/blurlock.sh' &
+exec --no-startup-id xautolock -time 3 -locker ~/.i3/scripts/blur-lock.sh -noclose -killtime 10 -killer ~/scripts/screenOff.sh -notify 30 -notifier "notify-send LOCKING SOON!" &
+exec --no-startup-id xset s 300 300
 
 # Color chooser
 # arch blue     #1793D1
