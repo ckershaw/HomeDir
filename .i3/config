@@ -219,7 +219,6 @@ exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id indicator-cpufreq
 exec --no-startup-id synclient VertScrollDelta=-111
 exec --no-startup-id xsetroot -solid "#333333"
-exec --no-startup-id setxkbmap -option caps:none
 exec --no-startup-id xautolock -time 3 -locker ~/.i3/scripts/blur-lock.sh -noclose -killtime 10 -killer ~/scripts/screenOff.sh -notify 30 -notifier "notify-send LOCKING SOON!" &
 exec --no-startup-id xset s 300 300
 
@@ -290,3 +289,7 @@ mode "$mode_system" {
     bindsym $mod+Escape mode "$default"
 }
 bindsym $mod+Escape mode "$mode_system"
+
+exec --no-startup-id exec ~/.i3/scripts/setkb.sh
+
+
