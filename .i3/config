@@ -32,23 +32,11 @@ bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window directionally
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+n split h
@@ -116,11 +104,6 @@ bindsym $mod+Control+8 workspace number 18
 bindsym $mod+Control+9 workspace number 19
 bindsym $mod+Control+0 workspace number 20
 
-bindsym $mod+Control+Left workspace prev
-bindsym $mod+Control+Right workspace next
-bindsym $mod+Control+Up focus output up
-bindsym $mod+Control+Down focus output down
-
 bindsym $mod+Control+h workspace prev
 bindsym $mod+Control+l workspace next
 bindsym $mod+Control+k focus output up
@@ -134,12 +117,6 @@ bindsym $mod+Shift+o move workspace to output left
 bindsym $mod+Shift+p move workspace to output right
 
 # Move container to workspace
-
-bindsym $mod+Shift+Control+Left move container to workspace prev; workspace prev
-bindsym $mod+Shift+Control+Right move container to workspace next; workspace next
-bindsym $mod+Shift+Control+Up   move container to output up; focus output up
-bindsym $mod+Shift+Control+Down move container to output down; focus output down
-
 bindsym $mod+Shift+Control+h move container to workspace prev; workspace prev
 bindsym $mod+Shift+Control+l move container to workspace next; workspace next
 bindsym $mod+Shift+Control+k move container to output up; focus output up
@@ -194,13 +171,6 @@ mode "resize" {
         bindsym Shift+k resize shrink height 1 px or 1 ppt
         bindsym Shift+j resize grow height 1 px or 1 ppt
         bindsym Shift+l resize grow width 1 px or 1 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape or mod+r again
         bindsym Return mode "default"

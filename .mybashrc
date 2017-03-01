@@ -119,3 +119,5 @@ function anth {
 
     return ${PIPESTATUS[0]}
 }
+
+set -o vi
