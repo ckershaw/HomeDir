@@ -1,11 +1,18 @@
 #!/bin/bash
+date
 if [ $# -eq "0" ] ; then
-    sudo echo "Sleeping now"
-    sudo pm-suspend
+    echo "Sleeping now"
+    systemctl suspend -i
 else
-    sudo echo "Sleeping in $1 minutes"
+    echo "Sleeping in $1 minutes"
+
 
     let "s = $1*60"
 
-    sudo sleep $s &&  amixer sset Master mute && sudo pm-suspend
+    sleep $s
+
+    sleep 10 && systemctl suspend -i &
+
+    i3-nagbar -m "sleeping soon" -b 'Cancel It' 'pkill sleep.sh '
+
 fi
