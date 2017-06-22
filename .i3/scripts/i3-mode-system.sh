@@ -1,7 +1,6 @@
 #!/bin/sh
 lock() {
-    #i3lock
-    ~/.i3/scripts/blur-lock.sh
+    xautolock -locknow
 }
 
 case "$1" in

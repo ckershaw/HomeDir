@@ -1,5 +1,6 @@
 [user]
-	email = ckershaw@umich.edu
+        #email = ckershaw@umich.edu
+        email = ckershaw@google.com
 	name = Carl Kershaw
 [alias]
 	st = status
