@@ -210,7 +210,6 @@ for_window [class="^Google-chrome-stable$" title="^MightyText$"] floating enable
 focus_follows_mouse no
 
 # startup programs
-#exec --no-startup-id compton -CGb
 exec --no-startup-id /usr/share/goobuntu-indicator/goobuntu_indicator.py
 exec --no-startup-id xrandr --output DP-3 --auto --above DP-4 --scale 2x2; exec  xrandr --output DP-4 --auto --pos 1520x2880
 
