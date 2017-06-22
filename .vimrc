@@ -118,6 +118,11 @@ noremap K <nop>
 set t_Co=256
 set bg=dark
 
+source /usr/share/vim/google/google.vim
+Glug youcompleteme-google
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
 syntax on
 noremap <silent> <C-n> :let @/="azsfaesrgesdsdrswer"<CR>
 
@@ -165,8 +170,8 @@ noremap <silent> cp <esc>:cp<CR>
 noremap <silent> x "_x
 
 "-------comments ------------------------------------------------------------
-let b:comment_leader = '//'
-au FileType c,cpp,java,javascript let b:comment_leader = '//'
+let b:comment_leader = '// '
+au FileType c,cpp,java,javascript let b:comment_leader = '// '
 au FileType haskell,vhdl,ada let b:comment_leader = '--'
 au FileType vim let b:comment_leader = '"'
 au FileType sh,make,r,python,cmake,conf let b:comment_leader = '#'
@@ -179,7 +184,7 @@ noremap ,u mC :call Uncomment()<cr> 'C
 function! Comment() range
     for lineno in range(a:firstline, a:lastline)
         let line = getline(lineno)
-        if strlen(line) > 2
+        if strlen(line) > 0
             let nonws = matchend(line, '^\s*')
             let sbegin = strpart(line, 0, nonws)
             let send   = strpart(line, nonws)
@@ -206,40 +211,40 @@ endfunction
 "noremap <silent> ,u :<C-B>sil <C-E>s/^\(\s*\)\V<C-R>=escape(b:comment_leader,'\/')<CR>/\1/e<CR>:noh<CR>
 
 "-------tags----------------------------------------------------------------
-set tags=./tags;/
-    "sets default tag file name
-noremap <silent> th <esc>:pclose<CR>
-    " th closes preview window
-noremap <silent> tJ <esc>:exec("tag ".expand("<cword>"))<CR>
-    " tJ to open the tag
-noremap <silent> tj <esc>:exec("ptag ".expand("<cword>"))<CR>
-    " tj preview the tag
-noremap <silent> t<C-j> <esc>:vsp <CR>:exec("tag ".expand("<cword>"))<CR>
-    " t<C-j> opens the destination of following the tag in a vsplit window
-noremap <silent> tK <esc>:exec("tselect ".expand("<cword>"))<CR>
-    " tK executes tag select
-noremap <silent> tk <esc>:exec("ptselect ".expand("<cword>"))<CR>
-    " tk previews the tag select
-noremap <silent> t<C-k> <esc>:vsp <CR>:exec("tselect ".expand("<cword>"))<CR>
-    " t<C-k> opens the tselect of the tag in a vsplit window
+"set tags=./tags;/
+    ""sets default tag file name
+"noremap <silent> th <esc>:pclose<CR>
+    "" th closes preview window
+"noremap <silent> tJ <esc>:exec("tag ".expand("<cword>"))<CR>
+    "" tJ to open the tag
+"noremap <silent> tj <esc>:exec("ptag ".expand("<cword>"))<CR>
+    "" tj preview the tag
+"noremap <silent> t<C-j> <esc>:vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+    "" t<C-j> opens the destination of following the tag in a vsplit window
+"noremap <silent> tK <esc>:exec("tselect ".expand("<cword>"))<CR>
+    "" tK executes tag select
+"noremap <silent> tk <esc>:exec("ptselect ".expand("<cword>"))<CR>
+    "" tk previews the tag select
+"noremap <silent> t<C-k> <esc>:vsp <CR>:exec("tselect ".expand("<cword>"))<CR>
+    "" t<C-k> opens the tselect of the tag in a vsplit window
 
 "------DICT----------------
 "set dictionary-=/usr/share/dict/words
 "set dictionary+=/usr/share/dict/words
 
-set complete-=i
-set complete-=k
-set complete+=k
+"set complete-=i
+"set complete-=k
+"set complete+=k
 
 set completeopt=longest,menuone
 
 "inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 "
-inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+"inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  "\ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 "
-inoremap <expr> <C-e> pumvisible() ? '<C-n>' :
-  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+"inoremap <expr> <C-e> pumvisible() ? '<C-n>' :
+  "\ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 "set omnifunc=syntaxcomplete#Complete
 
@@ -280,13 +285,14 @@ function! MyFoldText()
 endfunction
 
 set autochdir
+set autoread
 
-noremap ty "+y            " Select desired contents then press ty
-noremap tY "+Y            " Just press tY to yank entire line to clipboard
-noremap td "+d            " Select desired contents then press td
-noremap tD "+D            " Just press tY to delete entire line to clipboard
-noremap tp "+p            " Put the text from clipboard after the cursor
-noremap tP "+P            " Put the text from clipboard before the cursor
+noremap ty "+y
+noremap tY "+Y
+noremap td "+d
+noremap tD "+D
+noremap tp "+p
+noremap tP "+P
 
 set colorcolumn=+1
 colorscheme wombat256mod

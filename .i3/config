@@ -221,6 +221,7 @@ exec --no-startup-id synclient VertScrollDelta=-111
 exec --no-startup-id xsetroot -solid "#333333"
 exec --no-startup-id xautolock -time 3 -locker ~/.i3/scripts/blur-lock.sh -noclose -killtime 10 -killer ~/scripts/screenOff.sh -notify 30 -notifier "notify-send LOCKING SOON!" &
 exec --no-startup-id xset s 300 300
+exec --no-startup-id exec ~/.i3/scripts/setkb.sh
 
 # Color chooser
 # arch blue     #1793D1
@@ -245,7 +246,7 @@ set $urgent-bg-clr     #990000
 #                       border         background     text            indicator
 client.focused          $bg-clr        $edge-clr      $bg-clr         #A7A7A7
 client.unfocused        $inctv-bg-clr  $inctv-bg-clr  $inctv-text-clr $inctv-bg-clr
-client.focused_inactive $inctv-bg-clr  $inctv-bg-clr  $inctv-text-clr $inctv-bg-clr
+client.focused_inactive $unfc-edge-clr  $inctv-bg-clr  $inctv-text-clr $inctv-bg-clr
 client.urgent           $urgent-bg-clr $urgent-bg-clr $text-clr       #00ff00
 
 bar {
@@ -289,7 +290,5 @@ mode "$mode_system" {
     bindsym $mod+Escape mode "$default"
 }
 bindsym $mod+Escape mode "$mode_system"
-
-exec --no-startup-id exec ~/.i3/scripts/setkb.sh
 
 
