@@ -102,5 +102,3 @@ function anth {
 }
 
 set -o vi
-export P4DIFF=vimdiff
-export FRESHBINS=/google/data/ro/projects/chauffeur/freshbins/latest
