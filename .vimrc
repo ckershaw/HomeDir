@@ -46,6 +46,9 @@ highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
 match ExtraWhitespace /\s\+$/ " Match trailing whitespac
 
+" Set swap files to live on local disk
+set directory=~/.vim/cache//
+
 " sudo to write
 cnoremap w!! w !sudo tee % >/dev/null
 

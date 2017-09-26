@@ -11,7 +11,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
 
-hide_edge_borders smart
+#hide_edge_borders smart
 
 bindsym $mod+backslash exec i3-input -f 'pango: Ubuntu Mono 12' -F 'rename workspace to "%s"' -P 'New name: '
 
@@ -48,7 +48,7 @@ bindsym $mod+m split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
-bindsym $mod+shift+f        fullscreen toggle global
+bindsym $mod+shift+f        fullscreen global
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
@@ -68,7 +68,6 @@ bindsym $mod+a focus parent
 bindsym $mod+c focus child
 
 #aatempt screenshot
-bindsym $mod+Shift+f exec ~/scripts/floatshot.sh
 bindsym $mod+Control+c exec google-chrome
 
 #toggle border
@@ -219,9 +218,9 @@ exec --no-startup-id gnome-settings-daemon
 exec --no-startup-id indicator-cpufreq
 exec --no-startup-id synclient VertScrollDelta=-111
 exec --no-startup-id xsetroot -solid "#333333"
-exec --no-startup-id xautolock -time 3 -locker ~/.i3/scripts/blur-lock.sh -noclose -killtime 10 -killer ~/scripts/screenOff.sh -notify 30 -notifier "notify-send LOCKING SOON!" &
 exec --no-startup-id xset s 300 300
-exec --no-startup-id exec ~/.i3/scripts/setkb.sh
+exec --no-startup-id ~/.i3/scripts/autolock.sh
+exec --no-startup-id ~/.i3/scripts/setkb.sh
 
 # Color chooser
 # arch blue     #1793D1
