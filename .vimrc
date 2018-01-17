@@ -121,10 +121,12 @@ noremap K <nop>
 set t_Co=256
 set bg=dark
 
-source /usr/share/vim/google/google.vim
-Glug youcompleteme-google
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
+if filereadable("/usr/share/vim/google/google.vim ")
+  source /usr/share/vim/google/google.vim
+  Glug youcompleteme-google
+  let g:ycm_autoclose_preview_window_after_completion = 1
+  let g:ycm_autoclose_preview_window_after_insertion = 1
+endif
 
 syntax on
 noremap <silent> <C-n> :let @/="azsfaesrgesdsdrswer"<CR>
